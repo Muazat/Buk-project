@@ -5,7 +5,7 @@
         <!-- <h3>Welcome Back!</h3> -->
         <div class="form-control">
           <label for="email">Email</label>
-          <input class="" type="email" name="email" id="email" value="" />
+          <m-input type="email" name="email" id="email" />
         </div>
         <div class="form-control">
           <label for="password">Password</label>
@@ -14,7 +14,8 @@
             type="password"
             name="password"
             id="password"
-            value=""
+            v-model="password"
+            @mouseout="printPassword"
           />
         </div>
         <input type="hidden" name="" value="" />
@@ -27,7 +28,13 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const password = ref("");
+
+function printPassword() {
+  console.log(password.value);
+}
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/css/form.css";
