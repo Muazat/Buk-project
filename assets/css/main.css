@@ -173,25 +173,6 @@ h1 {
   display: none;
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.25rem 1rem;
-  text-decoration: none;
-  font: inherit;
-  border: 1px solid #436af1;
-  color: #fff;
-  background: #436af1;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn:hover,
-.btn:active {
-  background-color: #436af1;
-  color: #fff;
-}
-
 li:last-of-type {
   margin-bottom: 0;
 }

@@ -7,7 +7,7 @@
           <input type="email" name="email" id="email" />
         </div>
         <input type="hidden" name="" value="" />
-        <button class="btn" type="submit">Reset Password</button>
+        <Mbutton></Mbutton>
       </form>
       <br />
       <p class="centered">

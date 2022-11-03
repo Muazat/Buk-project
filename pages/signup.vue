@@ -26,12 +26,12 @@
             value=""
           />
         </div>
-        <input
+          <input
           type="hidden"
-          name="_csrf"
-          value="waGIQjCV-8CxJhucOQZVtGBe66yaTlqWx3XA"
+          name=""
+          value=""
         />
-        <button class="btn" type="submit">Sign Up</button>
+      <Mbutton></Mbutton>
       </form>
     </main>
   </div>

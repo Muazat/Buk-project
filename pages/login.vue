@@ -22,7 +22,7 @@
         <button class="btn" type="submit">Login</button>
       </form>
       <div class="reset">
-        <a href="reset_password.html">Reset Password</a>
+        <NuxtLink class="active muaxxa" to="/reset-password">Reset Password</NuxtLink>
       </div>
     </main>
   </div>
