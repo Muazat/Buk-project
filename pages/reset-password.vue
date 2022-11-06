@@ -7,7 +7,7 @@
           <input type="email" name="email" id="email" />
         </div>
         <input type="hidden" name="" value="" />
-        <Mbutton></Mbutton>
+        <Mbutton>Submit</Mbutton>
       </form>
       <br />
       <p class="centered">
@@ -18,7 +18,11 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  layout: "website",
+});
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/css/form.css";
