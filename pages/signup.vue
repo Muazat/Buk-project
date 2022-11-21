@@ -31,13 +31,18 @@
           name=""
           value=""
         />
-      <Mbutton></Mbutton>
+      <Mbutton class="btn" type="submit">SignUp</Mbutton>
       </form>
     </main>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  layout: "website",
+});
+
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/css/form.css";

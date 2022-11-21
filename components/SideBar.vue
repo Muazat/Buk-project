@@ -2,11 +2,11 @@
   <aside class="w-72 h-screen" aria-label="Sidebar">
     <div class="overflow-y-auto py-4 px-3 bg-tertiary h-full">
       <nuxt-link to="/" class="flex items-center pl-2.5 mb-5">
-        <img
+        <!-- <img
           src="https://flowbite.com/docs/images/logo.svg"
           class="mr-3 h-6 sm:h-7"
           alt="Flowbite Logo"
-        />
+        /> -->
         <span
           class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
           >Muaxxa</span

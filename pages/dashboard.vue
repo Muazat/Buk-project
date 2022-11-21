@@ -1,5 +1,5 @@
 <template>
-  <div>Dashboard</div>
+  <div class="mt-4">Dashboard</div>
 </template>
 
 <script setup></script>
