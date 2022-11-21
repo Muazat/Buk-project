@@ -19,18 +19,23 @@
           />
         </div>
         <input type="hidden" name="" value="" />
-        <button class="btn" type="submit">Login</button>
+        <Mbutton class="btn" type="submit">Login</Mbutton>
       </form>
       <div class="reset">
-        <NuxtLink class="active muaxxa" to="/reset-password">Reset Password</NuxtLink>
+        <NuxtLink class="active muaxxa" to="/reset-password"
+          >Reset Password</NuxtLink
+        >
       </div>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-const password = ref("");
+definePageMeta({
+  layout: "website",
+});
 
+const password = ref("");
 function printPassword() {
   console.log(password.value);
 }
