@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="absolute inset-x-1/3 mt-16 bg-white w-fit p-8 rounded">
     <main>
       <form class="login-form" action="" method="POST" novalidate>
         <!-- <h3>Welcome Back!</h3> -->

@@ -1,10 +1,10 @@
 <template>
   <div class="flex gap-3">
     <side-bar />
-    <div class="w-full mr-8">
+    <div class ="w-full mr-8">
       <drop-down></drop-down>
       <!-- <nav-bar class="mb-11" /> -->
-      <!-- <slot /> -->
+      <slot />
     </div>
   </div>
 </template>
