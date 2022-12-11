@@ -48,7 +48,6 @@ definePageMeta({
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 @import "@/assets/css/form.css";
-
 </style>

@@ -16,10 +16,10 @@
         <li v-for="link in appSection" :key="link.slug">
           <nuxt-link
             :to="link.slug"
-            class="flex items-center text-base font-normal text-[#657BCA] rounded-lg hover:text-primary"
+            class="flex items-center text-base font-bold text-[#657BCA] rounded-lg hover:text-primary"
           >
             <Icon :name="link.icon" />
-            <span class="ml-4">{{ link.name }}</span>
+            <span class="ml-4 ">{{ link.name }}</span>
           </nuxt-link>
         </li>
       </ul>

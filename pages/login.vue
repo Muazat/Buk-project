@@ -42,5 +42,6 @@ function printPassword() {
 </script>
 
 <style lang="scss" scoped>
+
 @import "@/assets/css/form.css";
 </style>
