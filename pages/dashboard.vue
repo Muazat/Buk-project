@@ -122,17 +122,6 @@
 </template>
 
 <script setup lang="ts">
-const appSection = [
-  {
-    slug: "dashboard",
-    name: "Dashboard",
-    icon: "fluent:calendar-data-bar-20-regular",
-  },
-  { slug: "notes", name: "Notes", icon: "fluent:notepad-20-regular" },
-  {
-    slug: "assignments",
-    name: "Assignments",
-    icon: "fluent:book-letter-20-regular",
-  }];</script>
+</script>
 
 <style lang="scss" scoped></style>
