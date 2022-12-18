@@ -21,6 +21,7 @@
           <TableData>2:00</TableData>
           <TableData>submit android</TableData>
         </tr>
+        <TableEnd><NuxtLink to="todo" class="font-light text-primary">see more</NuxtLink></TableEnd>
     </Table>
     </div>
 
@@ -40,13 +41,12 @@
           <TableData>1/2/2019</TableData>
           <TableData>Done</TableData>
         </tr>
+        <TableEnd><NuxtLink class="font-light text-primary" to="priorities">see more</NuxtLink></TableEnd>
     </Table>
     </div>
     
     
   </div>
-
-
 
 </template>
 

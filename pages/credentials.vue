@@ -1,7 +1,7 @@
 <template>
 
   <PageTitle>Credentials</PageTitle>
-  <AddButton class="md:float-right">+Add Credential</AddButton>
+  <AddButton class="md:float-right"><NuxtLink to="add-credential">+Add Credential</NuxtLink></AddButton>
 
 <div class="mt-4 md:mt-16 md:flex">
   <Table class=" md:ml-16 md:basis-4/5">

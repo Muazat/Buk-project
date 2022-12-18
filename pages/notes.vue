@@ -13,7 +13,11 @@
           <TableData class="font-bold ">Action</TableData>
         </TableHead>
         <tr class="border ">
-          <TableData class="text-green-500 font-semibold">View</TableData>
+          <TableData>
+            <div class="inline-flex">
+            <div class="mr-6 font-bold text-blue-500 hover:text-blue-300"> <nuxt-link to="">View </nuxt-link></div> <div class="font-bold text-green-500 hover:text-green-300"> <nuxt-link>Share</nuxt-link></div>
+          </div>
+          </TableData>
           <TableData>English</TableData>
           <TableData>Verbs</TableData>
           <TableData>11/2/2023</TableData>
@@ -23,7 +27,7 @@
           </div>
           </TableData>
         </tr>
-
+      <TableEnd><Pagination></Pagination></TableEnd>
     </Table>
   </div>
 

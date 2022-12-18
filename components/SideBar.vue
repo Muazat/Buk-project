@@ -64,6 +64,16 @@ const appSection = [
   name: "Assignments",
   icon: "fluent:book-letter-20-regular",
 },
+{
+  slug: "resourses",
+  name: "Resources",
+  icon: "fluent:folder-20-regular",
+},
+{
+  slug: "todo",
+  name: "Todo",
+  icon: "fluent:task-list-square-ltr-20-regular",
+},
 { slug: "calender", name: "Calender", icon: "fluent:calendar-20-regular" },
 {
   slug: "credentials",

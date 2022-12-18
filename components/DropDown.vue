@@ -8,6 +8,9 @@
     <div ref="opt" class="hidden w-44 mt-6 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
         <li>
+          <NuxtLink to="" @click="close" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Notifications</NuxtLink>
+        </li>
+        <li>
           <NuxtLink to="" @click="close" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</NuxtLink>
         </li>
         <li>

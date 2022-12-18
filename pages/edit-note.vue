@@ -1,7 +1,7 @@
 <template>
 
     <PageTitle>Edit note</PageTitle>
-    <div class="" ref="body">
+    <div class="md:ml-9" ref="body">
     <div class="mt-10 mb-2 font-semibold">Note Category</div>
     <Mselect></Mselect>
   <div class="mt-4 mb-2 font-semibold">Title</div>
@@ -17,8 +17,8 @@
     </div> 
   </div>
 </div>
-<div class="mb-0 w-4/5 md:w-2/3">
-<AddButton class="bg-green-500 text-white font-semibold p-2 float-right">EDIT NOTE</AddButton>
+<div class="w-4/5 md:w-2/3">
+<AddButton class="bg-green-500 text-white font-semibold p-2 float-right mb-10">EDIT NOTE</AddButton>
 </div>
   
   </template>
