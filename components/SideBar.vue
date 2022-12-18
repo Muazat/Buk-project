@@ -2,7 +2,7 @@
   <div>
     <div class="backdrop" ref="backDrop" @click="backdropClickHandler"></div>
     <header class="">
-      <button class=" border border-[tertiary] p-1 ml-1 mt-2 rounded font-bold" @click="menuToggleClickHandler">
+      <button class="border border-[tertiary] p-1 ml-1 mt-2 rounded font-bold" @click="menuToggleClickHandler">
         <svg
           class="w-8 h-8"
           aria-hidden="true"

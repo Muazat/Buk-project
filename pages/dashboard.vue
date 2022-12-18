@@ -1,6 +1,5 @@
 <template>
 <PageTitle>Dashboard</PageTitle>
-
  <DashboardSumarry></DashboardSumarry>
 
   <div class="md:flex mt-16">
