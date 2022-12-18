@@ -1,57 +1,80 @@
 <template>
-  <aside class="w-72 h-screen" aria-label="Sidebar">
-    <div class="overflow-y-auto py-4 px-3 bg-tertiary h-full">
-      <nuxt-link to="/" class="flex items-center pl-2.5 mb-5">
-        <!-- <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          class="mr-3 h-6 sm:h-7"
-          alt="Flowbite Logo"
-        /> -->
-        <span
-          class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-          >Muaxxa</span
+  <div>
+    <div class="backdrop" ref="backDrop" @click="backdropClickHandler"></div>
+    <header class="">
+      <button class=" border border-[tertiary] p-1 ml-1 mt-2 rounded font-bold" @click="menuToggleClickHandler">
+        <svg
+          class="w-8 h-8"
+          aria-hidden="true"
+          fill="blue"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
         >
-      </nuxt-link>
-      <ul class="flex gap-12 flex-col mx-8">
-        <li v-for="link in appSection" :key="link.slug">
-          <nuxt-link
-            :to="link.slug"
-            class="flex items-center text-base font-bold text-[#657BCA] rounded-lg hover:text-primary"
-          >
-            <Icon :name="link.icon" />
-            <span class="ml-4 ">{{ link.name }}</span>
-          </nuxt-link>
-        </li>
+          <path
+            fill-rule="evenodd"
+            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </button>
+    </header>
+
+    <nav ref="sideDrawer" class="mobile-nav">
+      <ul class="flex gap-14 flex-col m-8">
+
+          <li v-for="link in appSection" :key="link.slug">
+        <nuxt-link
+          :to="link.slug"
+          class="flex items-center text-xl text-[#657BCA] rounded-lg hover:text-primary"
+        >
+          <Icon :name="link.icon" />
+          <span class="ml-4 ">{{ link.name }}</span>
+        </nuxt-link>
+      </li>
       </ul>
-    </div>
-  </aside>
+    </nav>
+    <slot />
+  </div>
 </template>
 
 <script setup lang="ts">
+const backDrop = ref<HTMLDivElement>(null);
+const sideDrawer = ref<HTMLDivElement>(null);
+
+function backdropClickHandler() {
+  backDrop.value.style.display = "none";
+  sideDrawer.value.classList.remove("open");
+}
+
+function menuToggleClickHandler() {
+  backDrop.value.style.display = "block";
+  sideDrawer.value.classList.add("open");
+}
+
 const appSection = [
-  {
-    slug: "dashboard",
-    name: "Dashboard",
-    icon: "fluent:calendar-data-bar-20-regular",
-  },
-  { slug: "notes", name: "Notes", icon: "fluent:notepad-20-regular" },
-  {
-    slug: "assignments",
-    name: "Assignments",
-    icon: "fluent:book-letter-20-regular",
-  },
-  { slug: "calender", name: "Calender", icon: "fluent:calendar-20-regular" },
-  {
-    slug: "credentials",
-    name: "Credentials",
-    icon: "fluent:credit-card-clock-20-regular",
-  },
-  {
-    slug: "utilities",
-    name: "Utilities",
-    icon: "fluent:calculator-multiple-20-regular",
-  },
+{
+  slug: "dashboard",
+  name: "Dashboard",
+  icon: "fluent:calendar-data-bar-20-regular",
+},
+{ slug: "notes", name: "Notes", icon: "fluent:notepad-20-regular" },
+{
+  slug: "assignments",
+  name: "Assignments",
+  icon: "fluent:book-letter-20-regular",
+},
+{ slug: "calender", name: "Calender", icon: "fluent:calendar-20-regular" },
+{
+  slug: "credentials",
+  name: "Credentials",
+  icon: "fluent:credit-card-clock-20-regular",
+},
+{
+  slug: "utilities",
+  name: "Utilities",
+  icon: "fluent:calculator-multiple-20-regular",
+},
 ];
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

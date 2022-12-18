@@ -89,21 +89,23 @@ h1 {
 }
 
 .mobile-nav {
-  width: 30rem;
+  width: 18rem;
   height: 100vh;
-  max-width: 90%;
+  max-width: 70%;
   position: fixed;
   left: 0;
   top: 0;
-  background: #fff;
+  background: rgb(229 233 246);
   z-index: 10;
   padding: 2rem;
   transform: translateX(-100%);
   transition: transform 0.3s ease-out;
+  display: hidden;
 }
 
 .mobile-nav.open {
   transform: translateX(0);
+  display: block;
 }
 
 .mobile-nav__item-list {
@@ -125,7 +127,7 @@ h1 {
 .mobile-nav__item button {
   font: inherit;
   text-decoration: none;
-  color: #436af1;
+  /* color: #436af1; */
   font-size: 1.5rem;
   padding: 0.5rem 2rem;
   background: transparent;

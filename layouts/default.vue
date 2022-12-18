@@ -1,9 +1,8 @@
 <template>
-  <div class="flex gap-3">
-    <side-bar />
-    <div class ="w-full mr-8">
+  <div class="flex">
+    <side-bar></side-bar>
+    <div class ="w-full">
       <drop-down></drop-down>
-      <!-- <nav-bar class="mb-11" /> -->
       <slot />
     </div>
   </div>

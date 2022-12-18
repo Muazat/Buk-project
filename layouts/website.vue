@@ -3,8 +3,21 @@
     <div class="backdrop" ref="backDrop" @click="backdropClickHandler"></div>
     <header class="main-header">
       <button id="side-menu-toggle" @click="menuToggleClickHandler">
-        Menu
+        <svg
+            class="w-6 h-6"
+            aria-hidden="true"
+            fill="white"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
       </button>
+     <p class="text-white font-bold text-lg md:hidden">Muaxxa</p>
       <nav class="main-header__nav">
         <ul class="main-header__item-list">
           <li class="main-header__item">
@@ -25,19 +38,16 @@
     <nav ref="sideDrawer" class="mobile-nav">
       <ul class="mobile-nav__item-list">
         <li class="mobile-nav__item">
-          <NuxtLink class="active muaxxa" to="/">Muaxxa</NuxtLink>
-        </li>
-
-        <li class="mobile-nav__item">
-          <NuxtLink class="" to="/login">Log In</NuxtLink>
+          <NuxtLink class="" to="/login"  @click="backdropClickHandler">Log In</NuxtLink>
         </li>
         <li class="mobile-nav__item">
-          <NuxtLink class="" to="/signup">Sign Up</NuxtLink>
+          <NuxtLink class="" to="/signup"  @click="backdropClickHandler">Sign Up</NuxtLink>
         </li>
       </ul>
     </nav>
     <slot />
   </div>
+
 </template>
 
 <script setup lang="ts">

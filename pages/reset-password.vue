@@ -1,16 +1,17 @@
 <template>
-  <div>
-    <main>
+    <h1 class="mt-4 text-center text-primary text-2xl font-bold">Reset Password</h1>
+  <div class=" mt-3 flex justify-center text-primary font-semibold">
+    <main class=" rounded bg-tertiary  border border-primary md:p-6 ">
       <form class="login-form" action="" method="POST">
         <div class="form-control">
           <label for="email">Email</label>
           <input type="email" name="email" id="email" />
         </div>
-        <input type="hidden" name="" value="" />
+        <!-- <input type="hidden" name="" value="" /> -->
         <Mbutton>Submit</Mbutton>
       </form>
       <br />
-      <p class="centered">
+      <p class="centered hidden">
         Instructions for resetting your password will be sent to the email you
         provide.
       </p>
