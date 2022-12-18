@@ -6,7 +6,7 @@
            <div class="overflow-hidden">
              <table class="min-w-full text-center">
                 <slot></slot>
-                   <tr class="bg-tertiary"> <td colspan="4"><a class="font-light text-primary">see more</a></td></tr>
+                   <tr class="bg-tertiary"> <td colspan="7"><a class="font-light text-primary">see more</a></td></tr>
              </table>
            </div>
          </div>

@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-4 font-medium text-xl">Calander</div>
+    <PageTitle>Calander</PageTitle>
   </template>
   
   <script setup></script>

@@ -24,6 +24,7 @@
 
           <li v-for="link in appSection" :key="link.slug">
         <nuxt-link
+          @click="backdropClickHandler"
           :to="link.slug"
           class="flex items-center text-xl text-[#657BCA] rounded-lg hover:text-primary"
         >

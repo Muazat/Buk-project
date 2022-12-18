@@ -1,5 +1,5 @@
 <template>
-<div class="mt-4 ml-2 text-black text-2xl font-semibold">Dashboard</div>
+<PageTitle>Dashboard</PageTitle>
 
  <DashboardSumarry></DashboardSumarry>
 
