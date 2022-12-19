@@ -15,7 +15,7 @@
           <TableData>11/2/2023</TableData>
           <TableData>2:00</TableData>
           <TableData>submit android</TableData>
-          <TableData class="font-bold text-red-600"> Remove</TableData>
+          <TableData class="font-bold text-red-600"><svg xmlns="http://www.w3.org/2000/svg" id="mdi-delete" viewBox="0 0 24 24" fill="red" width="24" height="24"><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg></TableData>
         </tr>
 
         <TableEnd><Pagination></Pagination></TableEnd>

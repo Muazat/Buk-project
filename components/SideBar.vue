@@ -20,7 +20,7 @@
     </header>
 
     <nav ref="sideDrawer" class="mobile-nav">
-      <ul class="flex gap-14 flex-col m-8">
+      <ul class="flex gap-10 flex-col m-8">
 
           <li v-for="link in appSection" :key="link.slug">
         <nuxt-link
