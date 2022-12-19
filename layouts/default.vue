@@ -1,15 +1,13 @@
 <template>
-  <div class="flex">
+  <div class="md:flex">
     <side-bar></side-bar>
-    <div class ="w-full">
+    <div class="w-full">
       <drop-down></drop-down>
       <slot />
     </div>
   </div>
 </template>
 
-<script>
-</script>
+<script></script>
 
-<style scoped>
-</style>
+<style scoped></style>
