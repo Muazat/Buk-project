@@ -2,7 +2,10 @@
   <div>
     <div class="backdrop" ref="backDrop" @click="backdropClickHandler"></div>
     <header class="">
-      <button class="border border-[tertiary] p-1 ml-1 mt-2 rounded font-bold" @click="menuToggleClickHandler">
+      <button
+        class="border border-[tertiary] p-1 ml-1 mt-2 rounded font-bold"
+        @click="menuToggleClickHandler"
+      >
         <svg
           class="w-8 h-8"
           aria-hidden="true"
@@ -21,17 +24,16 @@
 
     <nav ref="sideDrawer" class="mobile-nav">
       <ul class="flex gap-10 flex-col m-8">
-
-          <li v-for="link in appSection" :key="link.slug">
-        <nuxt-link
-          @click="backdropClickHandler"
-          :to="link.slug"
-          class="flex items-center text-xl text-[#657BCA] rounded-lg hover:text-primary"
-        >
-          <Icon :name="link.icon" />
-          <span class="ml-4 ">{{ link.name }}</span>
-        </nuxt-link>
-      </li>
+        <li v-for="link in appSection" :key="link.slug">
+          <nuxt-link
+            @click="backdropClickHandler"
+            :to="link.slug"
+            class="flex items-center text-xl text-[#657BCA] rounded-lg hover:text-primary"
+          >
+            <Icon :name="link.icon" />
+            <span class="ml-4">{{ link.name }}</span>
+          </nuxt-link>
+        </li>
       </ul>
     </nav>
     <slot />
@@ -53,38 +55,38 @@ function menuToggleClickHandler() {
 }
 
 const appSection = [
-{
-  slug: "dashboard",
-  name: "Dashboard",
-  icon: "fluent:calendar-data-bar-20-regular",
-},
-{ slug: "notes", name: "Notes", icon: "fluent:notepad-20-regular" },
-{
-  slug: "assignments",
-  name: "Assignments",
-  icon: "fluent:book-letter-20-regular",
-},
-{
-  slug: "resourses",
-  name: "Resources",
-  icon: "fluent:folder-20-regular",
-},
-{
-  slug: "todo",
-  name: "Todo",
-  icon: "fluent:task-list-square-ltr-20-regular",
-},
-{ slug: "calender", name: "Calender", icon: "fluent:calendar-20-regular" },
-{
-  slug: "credentials",
-  name: "Credentials",
-  icon: "fluent:credit-card-clock-20-regular",
-},
-{
-  slug: "utilities",
-  name: "Utilities",
-  icon: "fluent:calculator-multiple-20-regular",
-},
+  {
+    slug: "dashboard",
+    name: "Dashboard",
+    icon: "fluent:calendar-data-bar-20-regular",
+  },
+  { slug: "notes", name: "Notes", icon: "fluent:notepad-20-regular" },
+  {
+    slug: "assignments",
+    name: "Assignments",
+    icon: "fluent:book-letter-20-regular",
+  },
+  {
+    slug: "resourses",
+    name: "Resources",
+    icon: "fluent:folder-20-regular",
+  },
+  {
+    slug: "todo",
+    name: "Todo",
+    icon: "fluent:task-list-square-ltr-20-regular",
+  },
+  { slug: "calender", name: "Calender", icon: "fluent:calendar-20-regular" },
+  {
+    slug: "credentials",
+    name: "Credentials",
+    icon: "fluent:credit-card-clock-20-regular",
+  },
+  {
+    slug: "utilities",
+    name: "Utilities",
+    icon: "fluent:calculator-multiple-20-regular",
+  },
 ];
 </script>
 
