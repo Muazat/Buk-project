@@ -5,7 +5,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare && husky install",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
