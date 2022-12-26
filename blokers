@@ -16,3 +16,7 @@ shared resources will come with categories eg lecturer can add assignment
 you can add a unique id that you can add friends and see their shared docs
 add friends that can see your shared files
 
+
+Figures what is causing errors and not rendering page
+Adds v-model on select
+Setup Xpressjs
