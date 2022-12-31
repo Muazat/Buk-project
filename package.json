@@ -10,8 +10,7 @@
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
-      "prettier --write --plugin=prettier-plugin-tailwindcss",
-      "eslint"
+      "prettier --write --plugin=prettier-plugin-tailwindcss"
     ]
   },
   "devDependencies": {
