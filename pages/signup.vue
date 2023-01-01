@@ -57,6 +57,7 @@
 
 <script setup lang="ts">
 import Mbutton from "~~/components/Mbutton.vue";
+const { auth } = useSupabaseClient();
 
 definePageMeta({
   layout: "website",
@@ -67,7 +68,6 @@ const userDetails = reactive({
   password: "",
   confirmPassword: "",
 });
-const { auth } = useSupabaseClient();
 const signUpUser = () => {
   auth.signUp({
     email: userDetails.email,

@@ -1,46 +1,59 @@
 <template>
   <div class="">
-  <h1 class="mt-4 text-center text-primary text-2xl font-bold">Welcome Back!</h1>
-  <div class=" mt-3 flex justify-center text-primary font-semibold">
-    <main class=" rounded bg-tertiary  border border-primary md:p-6 ">
-      <form class="login-form" action="" method="POST" novalidate>
-        <!-- <h3>Welcome Back!</h3> -->
-        <div class="form-control">
-          <label for="email">Email</label>
-          <m-input type="email" name="email" id="email" />
-        </div>
-        <div class="form-control">
-          <label for="password">Password</label>
-          <input
-            class=""
-            type="password"
-            name="password"
-            id="password"
-            v-model="password"
-            @mouseout="printPassword"
-          />
-        </div>
-        <input type="hidden" name="" value="" />
-        <Mbutton class="btn" type="submit">Login</Mbutton>
-      </form>
-      <div class="reset">
-        <NuxtLink class="active muaxxa mb-1" to="/reset-password"
-          >Reset Password</NuxtLink
+    <h1 class="mt-4 text-center text-2xl font-bold text-primary">
+      Welcome Back!
+    </h1>
+    <div class="mt-3 flex justify-center font-semibold text-primary">
+      <main class="rounded border border-primary bg-tertiary md:p-6">
+        <form
+          class="login-form"
+          action=""
+          method="POST"
+          novalidate
+          @submit.prevent="loginUser"
         >
-      </div>
-    </main>
+          <!-- <h3>Welcome Back!</h3> -->
+          <div class="form-control">
+            <label for="email">Email</label>
+            <MInput type="email" name="email" v-model="email" id="email" />
+          </div>
+          <div class="form-control">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              v-model="password"
+            />
+          </div>
+          <input type="hidden" name="" value="" />
+          <Mbutton class="btn" type="submit">Login</Mbutton>
+        </form>
+        <div class="reset">
+          <NuxtLink class="active muaxxa mb-1" to="/reset-password"
+            >Reset Password</NuxtLink
+          >
+        </div>
+      </main>
+    </div>
   </div>
-</div>
 </template>
 
 <script setup lang="ts">
+import MInput from "~~/components/MInput.vue";
+
+const { auth } = useSupabaseClient();
+
 definePageMeta({
   layout: "website",
 });
-
+const email = ref("");
 const password = ref("");
-function printPassword() {
-  console.log(password.value);
+function loginUser() {
+  auth.signInWithPassword({
+    email: email.value,
+    password: password.value,
+  });
 }
 </script>
 
