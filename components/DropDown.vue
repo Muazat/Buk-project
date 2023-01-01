@@ -1,30 +1,17 @@
 <template>
   <div>
-    <!-- Dropdown menu -->
     <div
       class="absolute top-1 right-1 float-right mt-4 flex flex-col md:right-10"
     >
       <div class="mx-10">
         <a
-          class="inline-flex cursor-pointer text-primary"
+          class="flex cursor-pointer items-center justify-center text-primary"
+          href=""
           @click="isOpen = !isOpen"
         >
           Username
-          <svg
-            class="ml-2 mt-1 h-4 w-4"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"
-            ></path></svg
-        ></a>
+          <Icon name="mdi:chevron-down" />
+        </a>
       </div>
       <div
         ref="opt"
