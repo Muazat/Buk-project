@@ -49,11 +49,16 @@ definePageMeta({
 });
 const email = ref("");
 const password = ref("");
-function loginUser() {
-  auth.signInWithPassword({
-    email: email.value,
-    password: password.value,
-  });
+async function loginUser() {
+  try {
+    await auth.signInWithPassword({
+      email: email.value,
+      password: password.value,
+    });
+    return navigateTo("/dashboard");
+  } catch (error) {
+    console.log({ error });
+  }
 }
 </script>
 
