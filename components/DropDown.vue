@@ -4,14 +4,13 @@
       class="absolute top-1 right-1 float-right mt-4 flex flex-col md:right-10"
     >
       <div class="mx-10">
-        <a
+        <div
           class="flex cursor-pointer items-center justify-center text-primary"
-          href=""
           @click="isOpen = !isOpen"
         >
           Username
           <Icon name="mdi:chevron-down" />
-        </a>
+        </div>
       </div>
       <div
         ref="opt"
@@ -40,7 +39,6 @@
           </li>
           <li>
             <div
-              to="/"
               @click="logout"
               class="block cursor-pointer py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
