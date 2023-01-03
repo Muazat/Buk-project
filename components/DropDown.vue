@@ -62,9 +62,13 @@ function close() {
 }
 async function logout() {
   close();
-  await useSupabaseClient().auth.signOut();
-  return navigateTo("/");
+  await useSupabaseAuthClient().auth.signOut();
 }
+watchEffect(() => {
+  if (!useSupabaseUser().value) {
+    navigateTo("/");
+  }
+});
 onClickOutside(opt, close);
 </script>
 
