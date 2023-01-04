@@ -42,7 +42,8 @@
 <script setup lang="ts">
 import MInput from "~~/components/MInput.vue";
 
-const { auth } = useSupabaseClient();
+const { auth } = useSupabaseAuthClient();
+const user = useSupabaseUser();
 
 definePageMeta({
   layout: "website",
@@ -51,15 +52,19 @@ const email = ref("");
 const password = ref("");
 async function loginUser() {
   try {
-    await auth.signInWithPassword({
+    auth.signInWithPassword({
       email: email.value,
       password: password.value,
     });
-    return navigateTo("/dashboard");
   } catch (error) {
     console.log({ error });
   }
 }
+watchEffect(() => {
+  if (user.value) {
+    navigateTo("/dashboard");
+  }
+});
 </script>
 
 <style scoped>

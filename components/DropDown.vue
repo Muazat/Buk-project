@@ -8,7 +8,7 @@
           class="flex cursor-pointer items-center justify-center text-primary"
           @click="isOpen = !isOpen"
         >
-          Username
+          {{ user?.user_metadata.username }}
           <Icon name="mdi:chevron-down" />
         </div>
       </div>
@@ -53,6 +53,7 @@
 
 <script setup lang="ts">
 import { onClickOutside } from "@vueuse/core";
+const user = useSupabaseUser();
 
 const isOpen = ref(false);
 const opt = ref<HTMLDivElement>(null);
@@ -62,9 +63,13 @@ function close() {
 }
 async function logout() {
   close();
-  await useSupabaseClient().auth.signOut();
-  return navigateTo("/");
+  await useSupabaseAuthClient().auth.signOut();
 }
+watchEffect(() => {
+  if (!useSupabaseUser().value) {
+    navigateTo("/");
+  }
+});
 onClickOutside(opt, close);
 </script>
 
