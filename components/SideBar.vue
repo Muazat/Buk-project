@@ -3,11 +3,11 @@
     <div class="backdrop" ref="backDrop" @click="backdropClickHandler"></div>
     <header class="">
       <button
-        class="border border-[tertiary] p-1 ml-1 mt-2 rounded font-bold"
+        class="ml-1 mt-2 rounded border border-[tertiary] p-1 font-bold"
         @click="menuToggleClickHandler"
       >
         <svg
-          class="w-8 h-8"
+          class="h-8 w-8"
           aria-hidden="true"
           fill="blue"
           viewBox="0 0 20 20"
@@ -23,12 +23,12 @@
     </header>
 
     <nav ref="sideDrawer" class="mobile-nav">
-      <ul class="flex gap-10 flex-col m-8">
+      <ul class="m-8 flex flex-col gap-10">
         <li v-for="link in appSection" :key="link.slug">
           <nuxt-link
             @click="backdropClickHandler"
             :to="link.slug"
-            class="flex items-center text-xl text-[#657BCA] rounded-lg hover:text-primary"
+            class="flex items-center rounded-lg text-xl text-[#657BCA] hover:text-primary"
           >
             <Icon :name="link.icon" />
             <span class="ml-4">{{ link.name }}</span>
@@ -76,7 +76,7 @@ const appSection = [
     name: "Todo",
     icon: "fluent:task-list-square-ltr-20-regular",
   },
-  { slug: "calender", name: "Calender", icon: "fluent:calendar-20-regular" },
+  { slug: "calender", name: "Time table", icon: "fluent:calendar-20-regular" },
   {
     slug: "credentials",
     name: "Credentials",
