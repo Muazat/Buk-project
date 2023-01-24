@@ -52,10 +52,15 @@ const email = ref("");
 const password = ref("");
 async function loginUser() {
   try {
-    auth.signInWithPassword({
+    const AuthUser = await auth.signInWithPassword({
       email: email.value,
       password: password.value,
     });
+    if (AuthUser.data.session !== null) {
+      useCookie("sb-refresh-token").value =
+        AuthUser?.data?.session.refresh_token;
+      useCookie("sb-access-token").value = AuthUser?.data?.session.access_token;
+    }
   } catch (error) {
     console.log({ error });
   }
