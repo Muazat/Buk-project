@@ -64,6 +64,9 @@ function close() {
 async function logout() {
   close();
   await useSupabaseAuthClient().auth.signOut();
+  useCookie("sb-refresh-token").value = null;
+  useCookie("sb-access-token").value = null;
+  user.value = null;
 }
 watchEffect(() => {
   if (!useSupabaseUser().value) {
