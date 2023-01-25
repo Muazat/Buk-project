@@ -10,7 +10,7 @@
         @submit.prevent="signUpUser"
       >
         <div class="form-control">
-          <label for="email">Username</label>
+          <label for="email">Name</label>
           <input
             class=""
             type="username"
