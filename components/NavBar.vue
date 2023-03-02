@@ -1,27 +1,24 @@
 <template>
-  <nav
-    class="md:bg-primary px-2 sm:px-4  dark:bg-blue-900 "
-  >
-    <div class="container flex flex-wrap justify-between items-center mx-auto">
+  <nav class="px-2 dark:bg-blue-900 sm:px-4 md:bg-primary">
+    <div class="container mx-auto flex flex-wrap items-center justify-between">
       <a href="/" class="flex items-center">
         <span
-          class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+          class="self-center whitespace-nowrap text-xl font-semibold dark:text-white"
           >Muaxxa</span
         >
       </a>
-      <div class="flex items-centermd:order-2">
-        
+      <div class="items-centermd:order-2 flex">
         <button
-         @click="backdropClickHandler"
+          @click="backdropClickHandler"
           data-collapse-toggle="mobile-menu-2"
           type="button"
-          class="inline-flex items-center p-2 ml-1 text-sm text-blue-500 rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-blue-400 dark:hover:bg-blue-700 dark:focus:ring-blue-600"
+          class="ml-1 inline-flex items-center rounded-lg p-2 text-sm text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-blue-400 dark:hover:bg-blue-700 dark:focus:ring-blue-600 md:hidden"
           aria-controls="mobile-menu-2"
           aria-expanded="false"
         >
           <span class="sr-only">Open main menu</span>
           <svg
-            class="w-6 h-6"
+            class="h-6 w-6"
             aria-hidden="true"
             fill="blue"
             viewBox="0 0 20 20"
@@ -37,16 +34,16 @@
       </div>
       <div
         ref="backDrop"
-        class="hidden  transition-transform translate-y-2 justify-between items-center w-full md:flex md:w-auto md:order-1"
+        class="hidden w-full translate-y-2 items-center justify-between transition-transform md:order-1 md:flex md:w-auto"
         id="mobile-menu-2"
       >
         <ul
-          class="flex flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0  md:dark:bg-blue-900 "
+          class="mt-4 flex flex-col p-4 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:text-sm md:font-medium md:dark:bg-blue-900"
         >
           <li>
             <a
               href="#"
-              class=" bg-tertiary block py-2 pr-4 pl-3 text-center md:bg-transparent md:text-black md:p-0 dark:text-white"
+              class="block bg-tertiary py-2 pr-4 pl-3 text-center dark:text-white md:bg-transparent md:p-0 md:text-black"
               aria-current="page"
               >Home</a
             >
@@ -54,14 +51,14 @@
           <li>
             <a
               href="#"
-              class=" bg-tertiary block py-2 pr-4 pl-3 text-black text-center hover:bg-blue-100  md:text-white md:hover:bg-transparent md:hover:text-black md:p-0 md:bg-inherit  md:dark:hover:text-white dark:hover:bg-blue-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              class="block bg-tertiary py-2 pr-4 pl-3 text-center text-black hover:bg-blue-100 dark:hover:bg-blue-700 dark:hover:text-white md:bg-inherit md:p-0 md:text-white md:hover:bg-transparent md:hover:text-black md:dark:hover:bg-transparent md:dark:hover:text-white"
               >Sign in</a
             >
           </li>
           <li>
             <a
               href="#"
-              class="bg-tertiary block py-2 pr-4 pl-3 text-black text-center hover:bg-blue-100 md:hover:bg-transparent md:bg-inherit md:text-white md:hover:text-black md:p-0  md:dark:hover:text-white dark:hover:text-white md:dark:hover:bg-transparent dark:border-blue-700"
+              class="block bg-tertiary py-2 pr-4 pl-3 text-center text-black hover:bg-blue-100 dark:border-blue-700 dark:hover:text-white md:bg-inherit md:p-0 md:text-white md:hover:bg-transparent md:hover:text-black md:dark:hover:bg-transparent md:dark:hover:text-white"
               >Sign up</a
             >
           </li>
@@ -74,12 +71,10 @@
 <script setup lang="ts">
 const backDrop = ref<HTMLDivElement>(null);
 
-
 function backdropClickHandler() {
   backDrop.value.style.display = "block";
   // sideDrawer.value.classList.remove("open");
 }
-
 </script>
 
 <style lang="scss" scoped></style>
