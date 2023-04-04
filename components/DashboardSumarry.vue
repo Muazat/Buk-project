@@ -13,7 +13,7 @@
         <h5
           class="text-center font-bold text-gray-900 dark:text-white md:mt-2 md:text-2xl"
         >
-          {{ summary.values }}
+          {{ summary.value }}
         </h5>
       </NuxtLink>
     </div>
@@ -21,10 +21,13 @@
 </template>
 
 <script setup lang="ts">
+const { noteCount } = definePropsRefs<{
+  noteCount: number;
+}>();
 const summaries = ref([
-  { title: "Total notes", values: "21", link: "notes" },
-  { title: "Assignment", values: "21", link: "assignments" },
-  { title: "Task todo", values: "21", link: "todo" },
+  { title: "Total notes", value: noteCount, link: "notes" },
+  { title: "Assignment", value: "21", link: "assignments" },
+  { title: "Task todo", value: "21", link: "todo" },
 ]);
 </script>
 

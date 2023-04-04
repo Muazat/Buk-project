@@ -1,5 +1,5 @@
 <template>
-    <div class="rounded ml-5 p-[1px] h-3 w-3"></div>
+  <div class="ml-5 h-3 w-3 rounded p-[1px]"></div>
 </template>
 
 <script setup lang="ts"></script>

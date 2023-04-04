@@ -1,5 +1,10 @@
 <template>
-    <button class="mr-6 md:mr-12 border text-sm p-1 mt-9 md:mt-3 hover:bg-tertiary rounded"><slot></slot></button>
+  <button
+    class="mr-6 mt-9 rounded border p-1 text-sm hover:bg-tertiary hover:text-primary md:mr-12 md:mt-3"
+    v-bind="$attrs"
+  >
+    <slot></slot>
+  </button>
 </template>
 
 <script setup lang="ts"></script>

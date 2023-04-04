@@ -88,6 +88,14 @@ const appSection = [
     icon: "fluent:calculator-multiple-20-regular",
   },
 ];
+
+const lecturerAppSection = [
+  {
+    slug: "classes",
+    name: "Classes",
+    icon: "fluent:people-20-regular",
+  },
+];
 </script>
 
 <style scoped></style>

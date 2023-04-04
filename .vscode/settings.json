@@ -1,22 +1,18 @@
 {
-    "cSpell.words": [
-      "nuxt",
-      "Vestimate"
-    ],
-    "[vue]": {
-      "editor.tabSize": 2,
-      "editor.formatOnSave": true
-    },
-    "[javascript]": {
-      "editor.tabSize": 2,
-      "editor.formatOnSave": true
-    },
-    "[typescript]": {
-      "editor.tabSize": 2,
-      "editor.formatOnSave": true
-    },
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    }
+  "cSpell.words": ["Mselect", "nuxt", "Vestimate"],
+  "[vue]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   }
-  
+}

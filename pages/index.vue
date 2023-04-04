@@ -10,11 +10,9 @@
 </template>
 
 <script setup lang="ts">
-
 definePageMeta({
-  layout: "website"
-})
-
+  layout: "website",
+});
 </script>
 
 <style scoped>

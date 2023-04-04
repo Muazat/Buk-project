@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div
-      class="absolute top-1 right-1 float-right mt-4 flex flex-col md:right-10"
-    >
+    <div class="absolute right-1 top-1 float-right mt-4 flex flex-col">
       <div class="mx-10">
         <div
           class="flex cursor-pointer items-center justify-center text-primary"
@@ -25,7 +23,7 @@
             <NuxtLink
               to=""
               @click="close"
-              class="block cursor-pointer py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              class="block cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >Notifications</NuxtLink
             >
           </li>
@@ -33,14 +31,14 @@
             <NuxtLink
               to=""
               @click="close"
-              class="block cursor-pointer py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              class="block cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >Profile</NuxtLink
             >
           </li>
           <li>
             <div
               @click="logout"
-              class="block cursor-pointer py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              class="block cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Logout
             </div>
@@ -63,10 +61,10 @@ function close() {
 }
 async function logout() {
   close();
+  user.value = null;
   await useSupabaseAuthClient().auth.signOut();
   useCookie("sb-refresh-token").value = null;
   useCookie("sb-access-token").value = null;
-  user.value = null;
 }
 watchEffect(() => {
   if (!useSupabaseUser().value) {

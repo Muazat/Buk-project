@@ -1,7 +1,9 @@
 <template>
-    <h1 class="mt-4 text-center text-primary text-2xl font-bold">Reset Password</h1>
-  <div class=" mt-3 flex justify-center text-primary font-semibold">
-    <main class=" rounded bg-tertiary  border border-primary md:p-6 ">
+  <h1 class="mt-4 text-center text-2xl font-bold text-primary">
+    Reset Password
+  </h1>
+  <div class="mt-3 flex justify-center font-semibold text-primary">
+    <main class="rounded border border-primary bg-tertiary md:p-6">
       <form class="login-form" action="" method="POST">
         <div class="form-control">
           <label for="email">Email</label>
