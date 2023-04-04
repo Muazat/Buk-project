@@ -26,7 +26,7 @@ export interface Database {
           category?: string | null;
           content?: string | null;
           created_at?: string | null;
-          due_date?: string | null;
+          due_date?: Date | string | null;
           has_attachement?: boolean | null;
           id?: number;
           priority?: string | null;

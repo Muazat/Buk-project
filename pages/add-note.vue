@@ -1,14 +1,15 @@
 <template>
   <div class="md:ml-9" ref="body">
-    <div class="mt-10 mb-2 font-semibold">Note Category</div>
+    <div class="mb-2 mt-10 font-semibold">Note Category</div>
     <Mselect v-model="category" :options="['One', 'Two']"></Mselect>
-    <div class="mt-4 mb-2 font-semibold">Title</div>
+    <div class="mb-2 mt-4 font-semibold">Title</div>
     <TextInput v-model="title"></TextInput>
 
-    <div class="mt-4 mb-2 font-semibold">Content</div>
+    <div class="mb-2 mt-4 font-semibold">Content</div>
     <NoteField v-model="description"></NoteField>
-    <div class="mt-4 mb-2 font-semibold">Attachments</div>
+    <div class="mb-2 mt-4 font-semibold">Attachments</div>
     <div class="mb-0 w-4/5 md:w-2/3">
+      <!-- {{ file[0].name }} -->
       <FileInput v-model="file"></FileInput>
     </div>
   </div>
@@ -22,9 +23,9 @@
   </div>
 
   <!-- work on this code to add categories to options easily -->
-  <!-- <div class="hidden opacity-100 " ref="category">
+  <div class="" ref="category">
     <CreateCategory></CreateCategory>
-</div> -->
+  </div>
   <!-- <a class="text-primary md:float-right md:w-1/2" @click="categoryClickHandler">Create New Category</a> -->
 </template>
 
@@ -73,7 +74,7 @@ const submitHandler = async () => {
           .from("files")
           .upload(
             `${useSupabaseUser().value?.id}/notes/${
-              savedData![0].id
+              savedData[0].id
             }.${file.value[0].name.split(".").at(-1)?.trim()}`,
             file.value[0]
           );
