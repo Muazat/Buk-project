@@ -12,27 +12,62 @@ export interface Database {
       Assignments: {
         Row: {
           category: string | null;
+          content: string | null;
           created_at: string | null;
           due_date: string | null;
+          has_attachement: boolean | null;
           id: number;
+          priority: string | null;
           status: string | null;
           title: string | null;
+          user_id: string | null;
         };
         Insert: {
           category?: string | null;
+          content?: string | null;
           created_at?: string | null;
           due_date?: string | null;
+          has_attachement?: boolean | null;
           id?: number;
+          priority?: string | null;
           status?: string | null;
           title?: string | null;
+          user_id?: string | null;
         };
         Update: {
           category?: string | null;
+          content?: string | null;
           created_at?: string | null;
           due_date?: string | null;
+          has_attachement?: boolean | null;
           id?: number;
+          priority?: string | null;
           status?: string | null;
           title?: string | null;
+          user_id?: string | null;
+        };
+      };
+      Credentials: {
+        Row: {
+          created_at: string | null;
+          has_attachment: boolean | null;
+          id: number;
+          title: string | null;
+          user_id: string | null;
+        };
+        Insert: {
+          created_at?: string | null;
+          has_attachment?: boolean | null;
+          id?: number;
+          title?: string | null;
+          user_id?: string | null;
+        };
+        Update: {
+          created_at?: string | null;
+          has_attachment?: boolean | null;
+          id?: number;
+          title?: string | null;
+          user_id?: string | null;
         };
       };
       "Lecturer's classes": {
@@ -66,6 +101,7 @@ export interface Database {
           has_attachment: boolean | null;
           id: number;
           title: string | null;
+          user_id: string | null;
         };
         Insert: {
           category?: string | null;
@@ -74,6 +110,7 @@ export interface Database {
           has_attachment?: boolean | null;
           id?: number;
           title?: string | null;
+          user_id?: string | null;
         };
         Update: {
           category?: string | null;
@@ -82,6 +119,7 @@ export interface Database {
           has_attachment?: boolean | null;
           id?: number;
           title?: string | null;
+          user_id?: string | null;
         };
       };
     };
