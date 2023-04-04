@@ -6,7 +6,7 @@
       <TextInput v-model="fileName" />
       <div class="mb-2 mt-4 font-semibold">Attachments</div>
       <div class="mb-0 w-4/5 md:w-2/3">
-        <FileInput v-model="file"></FileInput>
+        <FileInput required v-model="file"></FileInput>
       </div>
     </div>
     <div class="w-4/5 md:w-2/3">
@@ -32,6 +32,7 @@ async function addCredential() {
       .from("Credentials")
       .insert({
         title: fileName.value,
+        has_attachment: file.value ? true : false,
       })
       .select("*");
 
