@@ -21,13 +21,15 @@
 </template>
 
 <script setup lang="ts">
-const { noteCount } = definePropsRefs<{
-  noteCount: number;
+const { noteCount, AssignmentCount, todoCount } = definePropsRefs<{
+  noteCount: number | null;
+  AssignmentCount: number | null;
+  todoCount: number | null;
 }>();
 const summaries = ref([
   { title: "Total notes", value: noteCount, link: "notes" },
-  { title: "Assignment", value: "21", link: "assignments" },
-  { title: "Task todo", value: "21", link: "todo" },
+  { title: "Assignment", value: AssignmentCount, link: "assignments" },
+  { title: "Task todo", value: todoCount, link: "todo" },
 ]);
 </script>
 

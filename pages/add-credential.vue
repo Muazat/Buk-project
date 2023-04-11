@@ -3,10 +3,10 @@
   <form @submit.prevent="addCredential">
     <div class="md:ml-9">
       <div class="mb-2 mt-4 font-semibold">Title</div>
-      <TextInput v-model="fileName" />
+      <TextInput required v-model="credentialForm.fileName" />
       <div class="mb-2 mt-4 font-semibold">Attachments</div>
       <div class="mb-0 w-4/5 md:w-2/3">
-        <FileInput required v-model="file"></FileInput>
+        <FileInput required v-model="credentialForm.file" />
       </div>
     </div>
     <div class="w-4/5 md:w-2/3">
@@ -19,20 +19,22 @@
 </template>
 
 <script setup lang="ts">
-const fileName = ref("");
-const file = ref<FileList | null>(null);
+const credentialForm = reactive({
+  fileName: "",
+  file: null as FileList | null,
+});
 
 async function addCredential() {
   try {
     console.log({
-      title: fileName.value,
+      title: credentialForm.fileName,
     });
 
     const { data: savedData, error } = await useSupabaseClientT
       .from("Credentials")
       .insert({
-        title: fileName.value,
-        has_attachment: file.value ? true : false,
+        title: credentialForm.fileName,
+        has_attachment: credentialForm.file ? true : false,
       })
       .select("*");
 
@@ -41,15 +43,15 @@ async function addCredential() {
     }
 
     if (savedData) {
-      console.log(savedData, file.value);
-      if (file.value) {
+      console.log(savedData, credentialForm.file);
+      if (credentialForm.file) {
         const { data, error } = await useSupabaseClientT.storage
           .from("files")
           .upload(
             `${useSupabaseUser().value?.id}/credentials/${
               savedData[0].id
-            }.${file.value[0].name.split(".").at(-1)?.trim()}`,
-            file.value[0]
+            }.${credentialForm.file[0].name.split(".").at(-1)?.trim()}`,
+            credentialForm.file[0]
           );
         if (error) {
           console.log(error);
