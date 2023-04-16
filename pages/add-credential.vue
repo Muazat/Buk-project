@@ -1,21 +1,23 @@
 <template>
-  <PageTitle>Add Credential</PageTitle>
-  <form @submit.prevent="addCredential">
-    <div class="md:ml-9">
-      <div class="mb-2 mt-4 font-semibold">Title</div>
-      <TextInput required v-model="credentialForm.fileName" />
-      <div class="mb-2 mt-4 font-semibold">Attachments</div>
-      <div class="mb-0 w-4/5 md:w-2/3">
-        <FileInput required v-model="credentialForm.file" />
+  <div>
+    <PageTitle>Add Credential</PageTitle>
+    <form @submit.prevent="addCredential">
+      <div class="md:ml-9">
+        <div class="mb-2 mt-4 font-semibold">Title</div>
+        <TextInput required v-model="credentialForm.fileName" />
+        <div class="mb-2 mt-4 font-semibold">Attachments</div>
+        <div class="mb-0 w-4/5 md:w-2/3">
+          <FileInput required v-model="credentialForm.file" />
+        </div>
       </div>
-    </div>
-    <div class="w-4/5 md:w-2/3">
-      <AddButton
-        class="float-right mb-10 bg-green-500 p-2 font-semibold text-white"
-        >ADD CREDENTIAL
-      </AddButton>
-    </div>
-  </form>
+      <div class="w-4/5 md:w-2/3">
+        <AddButton
+          class="float-right mb-10 bg-green-500 p-2 font-semibold text-white"
+          >ADD CREDENTIAL
+        </AddButton>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script setup lang="ts">

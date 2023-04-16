@@ -24,10 +24,10 @@
 
     <nav ref="sideDrawer" class="mobile-nav">
       <ul class="m-8 flex flex-col gap-10">
-        <li v-for="link in appSection" :key="link.slug">
+        <li v-for="link in appSections" :key="link.slug">
           <nuxt-link
             @click="backdropClickHandler"
-            :to="link.slug"
+            :to="`/${link.slug}`"
             class="flex items-center rounded-lg text-xl text-[#657BCA] hover:text-primary"
           >
             <Icon :name="link.icon" />
@@ -54,7 +54,7 @@ function menuToggleClickHandler() {
   sideDrawer.value.classList.add("open");
 }
 
-const appSection = [
+const studentsAppSection = [
   {
     slug: "dashboard",
     name: "Dashboard",
@@ -67,7 +67,7 @@ const appSection = [
     icon: "fluent:book-letter-20-regular",
   },
   {
-    slug: "resourses",
+    slug: "class",
     name: "Resources",
     icon: "fluent:folder-20-regular",
   },
@@ -96,6 +96,13 @@ const lecturerAppSection = [
     icon: "fluent:people-20-regular",
   },
 ];
+const appSections = computed(() => {
+  const user = useSupabaseUser();
+  if (user.value?.user_metadata?.isInstructor) {
+    return lecturerAppSection;
+  }
+  return studentsAppSection;
+});
 </script>
 
 <style scoped></style>

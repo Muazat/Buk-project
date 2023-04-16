@@ -1,5 +1,10 @@
 {
-  "cSpell.words": ["Mselect", "nuxt", "Vestimate"],
+  "cSpell.words": [
+    "Mbutton",
+    "Mselect",
+    "nuxt",
+    "Vestimate"
+  ],
   "[vue]": {
     "editor.tabSize": 2,
     "editor.formatOnSave": true
