@@ -26,7 +26,7 @@ export interface Database {
           category?: string | null;
           content?: string | null;
           created_at?: string | null;
-          due_date?: Date | string | null;
+          due_date?: string | null;
           has_attachement?: boolean | null;
           id?: number;
           priority?: string | null;
@@ -72,25 +72,60 @@ export interface Database {
       };
       "Lecturer's classes": {
         Row: {
+          course_code: string;
           course_name: string;
           created_at: string | null;
           description: string | null;
           id: number;
-          shared_code: string | null;
+          shared_code: string;
+          user_id: string;
         };
         Insert: {
+          course_code: string;
           course_name: string;
           created_at?: string | null;
           description?: string | null;
           id?: number;
-          shared_code?: string | null;
+          shared_code: string;
+          user_id?: string;
         };
         Update: {
+          course_code?: string;
           course_name?: string;
           created_at?: string | null;
           description?: string | null;
           id?: number;
-          shared_code?: string | null;
+          shared_code?: string;
+          user_id?: string;
+        };
+      };
+      "Lecturer's resources": {
+        Row: {
+          access_code: string;
+          created_at: string | null;
+          description: string | null;
+          has_attachment: boolean | null;
+          id: number;
+          title: string | null;
+          user_id: string | null;
+        };
+        Insert: {
+          access_code: string | string[];
+          created_at?: string | null;
+          description?: string | null;
+          has_attachment?: boolean | null;
+          id?: number;
+          title?: string | null;
+          user_id?: string | null;
+        };
+        Update: {
+          access_code?: string;
+          created_at?: string | null;
+          description?: string | null;
+          has_attachment?: boolean | null;
+          id?: number;
+          title?: string | null;
+          user_id?: string | null;
         };
       };
       Notes: {

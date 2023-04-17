@@ -1,6 +1,10 @@
 <template>
   <PageTitle>Dashboard</PageTitle>
-  <DashboardSumarry :noteCount="noteCount"></DashboardSumarry>
+  <DashboardSumarry
+    :noteCount="noteCount"
+    :AssignmentCount="assignmentCount"
+    :todoCount="todoCount"
+  />
 
   <div class="mt-16 md:flex">
     <div class="md:mx-6 md:basis-1/3">
@@ -63,11 +67,23 @@ import { Database } from "~~/types/supabase";
 const supabaseClient = useSupabaseClient<Database>();
 
 const noteCount = ref<number | null>(0);
+const assignmentCount = ref<number | null>(0);
+const todoCount = ref<number | null>(0);
 async function getCounts() {
-  const { count } = await supabaseClient
+  const noteCall = supabaseClient
     .from("Notes")
     .select("*", { count: "exact", head: true });
-  noteCount.value = count;
+  const AssignmentCall = supabaseClient
+    .from("Assignments")
+    .select("*", { count: "exact", head: true });
+  const todoCall = supabaseClient
+    .from("Notes")
+    .select("*", { count: "exact", head: true });
+  Promise.allSettled([noteCall, AssignmentCall, todoCall]).then((res) => {
+    noteCount.value = res[0].value?.count;
+    assignmentCount.value = res[1].value?.count;
+    todoCount.value = res[2].value?.count;
+  });
 }
 getCounts();
 </script>

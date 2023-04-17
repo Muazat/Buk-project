@@ -10,13 +10,13 @@
         @submit.prevent="signUpUser"
       >
         <div class="form-control">
-          <label for="email">Name</label>
+          <label for="name">Name</label>
           <input
             class=""
-            type="username"
-            name="username"
-            id="username"
-            v-model="userDetails.username"
+            type="text"
+            name="name"
+            id="name"
+            v-model="userDetails.name"
           />
         </div>
         <div class="form-control">
@@ -24,7 +24,7 @@
           <input
             class=""
             type="email"
-            name="email"
+            name="username"
             id="email"
             v-model="userDetails.email"
           />
@@ -44,12 +44,25 @@
           <input
             class=""
             type="password"
-            name="confirmPassword"
+            name="confirm-password"
             id="confirmPassword"
             v-model="userDetails.confirmPassword"
           />
         </div>
+        <div>
+          <input
+            type="checkbox"
+            id="instructor"
+            v-model="userDetails.isInstructor"
+          />
+          <label for="instructor" class="ml-1 cursor-pointer">
+            Sign up as instructor
+          </label>
+        </div>
         <Mbutton class="btn" type="submit"> SignUp </Mbutton>
+        <p :class="{ 'text-red-500': isErr }">
+          {{ msg }}
+        </p>
       </form>
     </main>
   </div>
@@ -63,21 +76,41 @@ definePageMeta({
   layout: "website",
 });
 const userDetails = reactive({
-  username: "",
+  name: "",
   email: "",
   password: "",
   confirmPassword: "",
+  isInstructor: false,
 });
+const msg = ref("");
+const isErr = ref(false);
 const signUpUser = () => {
-  auth.signUp({
-    email: userDetails.email,
-    password: userDetails.password,
-    options: {
-      data: {
-        username: userDetails.username,
+  if (userDetails.password !== userDetails.confirmPassword) {
+    msg.value = "Passwords do not match";
+    isErr.value = true;
+    return;
+  }
+  isErr.value = false;
+  auth
+    .signUp({
+      email: userDetails.email,
+      password: userDetails.password,
+      options: {
+        data: {
+          username: userDetails.name,
+          isInstructor: userDetails.isInstructor,
+        },
       },
-    },
-  });
+    })
+    .then((res) => {
+      if (res.error) {
+        msg.value = res.error.message;
+        isErr.value = true;
+      } else {
+        msg.value = "User created successfully";
+        navigateTo("/dashboard");
+      }
+    });
 };
 </script>
 

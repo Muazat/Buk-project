@@ -1,7 +1,7 @@
 <template>
   <div class="md:flex">
     <side-bar></side-bar>
-    <div class="w-full">
+    <div class="container w-full">
       <drop-down></drop-down>
       <slot />
     </div>

@@ -1,13 +1,13 @@
 <template>
   <div class="md:ml-9" ref="body">
-    <div class="mt-10 mb-2 font-semibold">Note Category</div>
+    <div class="mb-2 mt-10 font-semibold">Note Category</div>
     <Mselect v-model="category" :options="['One', 'Two']"></Mselect>
-    <div class="mt-4 mb-2 font-semibold">Title</div>
+    <div class="mb-2 mt-4 font-semibold">Title</div>
     <TextInput v-model="title"></TextInput>
 
-    <div class="mt-4 mb-2 font-semibold">Content</div>
+    <div class="mb-2 mt-4 font-semibold">Content</div>
     <NoteField v-model="description"></NoteField>
-    <div class="mt-4 mb-2 font-semibold">Attachments</div>
+    <div class="mb-2 mt-4 font-semibold">Attachments</div>
     <div class="mb-0 w-4/5 md:w-2/3">
       <FileInput v-model="file"></FileInput>
     </div>
@@ -19,32 +19,18 @@
     >
       ADD NOTE
     </AddButton>
-  </div>
 
-  <!-- work on this code to add categories to options easily -->
-  <!-- <div class="hidden opacity-100 " ref="category">
-    <CreateCategory></CreateCategory>
-</div> -->
-  <!-- <a class="text-primary md:float-right md:w-1/2" @click="categoryClickHandler">Create New Category</a> -->
+    <!-- work on this code to add categories to options easily -->
+    <!-- <div class="hidden opacity-100 " ref="category">
+        <CreateCategory></CreateCategory>
+    </div> -->
+    <!-- <a class="text-primary md:float-right md:w-1/2" @click="categoryClickHandler">Create New Category</a> -->
+  </div>
 </template>
 
 <script setup lang="ts">
 import { Database } from "~~/types/supabase";
 const supabaseClient = useSupabaseClient<Database>();
-
-// const category = ref<HTMLDivElement>(null);
-// const body = ref<HTMLDivElement>(null);
-
-// function categoryClickHandler() {
-//     category.value.style.display="block";
-//     body.value.style.opacity="0.2";
-
-// }
-
-// function closeCategoryClickHandler() {
-//     category.value.style.display="none";
-//     body.value.style.opacity="1";
-// }
 
 const title = ref("");
 const description = ref("");

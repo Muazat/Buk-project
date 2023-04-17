@@ -15,8 +15,9 @@
   <div class="w-4/5 md:w-2/3">
     <AddButton
       class="float-right mb-10 bg-green-500 p-2 font-semibold text-white"
-      >CREATE TASK</AddButton
     >
+      CREATE TASK
+    </AddButton>
   </div>
 </template>
 

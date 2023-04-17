@@ -31,9 +31,9 @@
           <li class="main-header__item">
             <NuxtLink class="" to="/signup">Sign Up</NuxtLink>
           </li>
-          <li class="main-header__item">
+          <!-- <li class="main-header__item">
             <NuxtLink class="" to="/admin-login">Instructor</NuxtLink>
-          </li>
+          </li> -->
         </ul>
       </nav>
     </header>
@@ -50,11 +50,11 @@
             >Sign Up</NuxtLink
           >
         </li>
-        <li class="mobile-nav__item">
+        <!-- <li class="mobile-nav__item">
           <NuxtLink class="" to="/admin-login" @click="backdropClickHandler"
             >Instructor</NuxtLink
           >
-        </li>
+        </li> -->
       </ul>
     </nav>
     <slot />
