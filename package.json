@@ -33,6 +33,7 @@
     "sass": "^1.55.0"
   },
   "dependencies": {
+    "consola": "^3.0.1",
     "dayjs": "^1.11.7"
   }
 }
