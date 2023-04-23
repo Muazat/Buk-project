@@ -5,6 +5,9 @@
     </h1>
     <div class="mt-3 flex justify-center font-semibold text-primary">
       <main class="rounded border border-primary bg-tertiary md:p-6">
+        <p :class="{ 'text-red-500': isErr }">
+          {{ msg }}
+        </p>
         <form
           class="login-form"
           action=""
@@ -50,6 +53,8 @@ definePageMeta({
 });
 const email = ref("");
 const password = ref("");
+const msg = ref("");
+const isErr = ref(false);
 async function loginUser() {
   try {
     const AuthUser = await auth.signInWithPassword({
@@ -60,7 +65,12 @@ async function loginUser() {
       useCookie("sb-refresh-token").value =
         AuthUser?.data?.session.refresh_token;
       useCookie("sb-access-token").value = AuthUser?.data?.session.access_token;
+    } else {
+      msg.value = "Incorrect Email or Password";
+      isErr.value = true;
+      return;
     }
+    isErr.value = false;
   } catch (error) {
     console.log({ error });
   }
