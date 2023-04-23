@@ -16,7 +16,7 @@
           <TableData class="font-bold"> Description</TableData>
         </TableHead>
         <tbody>
-          <tr class="border">
+          <!-- <tr class="border">
             <TableData>11/2/2023</TableData>
             <TableData>2:00</TableData>
             <TableData>submit android</TableData>
@@ -25,7 +25,7 @@
             <TableData>11/2/2023</TableData>
             <TableData>2:00</TableData>
             <TableData>submit android</TableData>
-          </tr>
+          </tr> -->
           <TableEnd>
             <NuxtLink to="todo" class="font-light text-primary">
               see more
@@ -45,12 +45,12 @@
           <TableData class="font-bold">Status</TableData>
         </TableHead>
         <tbody>
-          <tr class="border">
+          <!-- <tr class="border">
             <TableData><Priority class="bg-red-400"></Priority></TableData>
             <TableData>submit android</TableData>
             <TableData>1/2/2019</TableData>
             <TableData>Done</TableData>
-          </tr>
+          </tr> -->
           <TableEnd>
             <NuxtLink class="font-light text-primary" to="priorities">
               see more
