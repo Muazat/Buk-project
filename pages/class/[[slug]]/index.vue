@@ -33,18 +33,21 @@
           <TableData>
             <div class="inline-flex items-center">
               <div class="mr-6 font-bold text-blue-500 hover:text-blue-300">
-                <div title="Download File" to="view-note">
+                <button
+                  @click="downloadFile(resource)"
+                  title="Download File"
+                  to="view-note"
+                >
                   <Icon
                     name="material-symbols:attach-file-add-rounded"
                     class="h-6 w-6"
-                    :class="{
-                      'cursor-pointer text-blue-500 hover:text-blue-300':
-                        resource.has_attachment,
-                      'cursor-not-allowed text-gray-300':
-                        !resource.has_attachment,
-                    }"
+                    :class="[
+                      resource.has_attachment && resource.file_ext
+                        ? 'cursor-pointer text-blue-500 hover:text-blue-300'
+                        : 'cursor-not-allowed text-gray-300',
+                    ]"
                   />
-                </div>
+                </button>
               </div>
             </div>
           </TableData>
@@ -107,6 +110,43 @@ const deleteNote = async (id: number) => {
 const isLecturer = computed(() => {
   return useSupabaseUser().value?.user_metadata?.isInstructor;
 });
+
+var saveData = (function () {
+  var a = document.createElement("a");
+  document.body.appendChild(a);
+  a.style = "display: none";
+  return function (data, fileName) {
+    var json = JSON.stringify(data),
+      blob = new Blob([json], { type: "octet/stream" }),
+      url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = fileName;
+    a.click();
+    window.URL.revokeObjectURL(url);
+  };
+})();
+
+const downloadFile = async (resource) => {
+  const { data, error } = await supabaseClient.storage
+    .from("lecturers-record")
+    .download(
+      `${useSupabaseUser().value?.id}/resources/${resource.id}.${
+        resource.file_ext
+      }`
+      //   {
+      // transform: {
+      //   width: 100,
+      //   height: 100,
+      //   quality: 80
+      // }
+    );
+  // if (data) {
+  //   // download the file
+  //   console.log(data);
+
+  //   saveData(data, `${resource.id}.${resource.file_ext}`);
+  // }
+};
 </script>
 
 <style lang="scss" scoped></style>

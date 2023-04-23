@@ -35,6 +35,9 @@ const file = ref<FileList | null>(null);
 
 const submitHandler = async () => {
   try {
+    const file_ext = file.value
+      ? file.value[0].name.split(".").at(-1)?.trim()
+      : null;
     const { data: savedData, error } = await supabaseClient
       .from("Lecturer's resources")
       .insert({
@@ -42,6 +45,7 @@ const submitHandler = async () => {
         description: description.value,
         has_attachment: file.value ? true : false,
         access_code: useRoute().params.slug,
+        file_ext,
       })
       .select("*");
     if (error) {
@@ -56,7 +60,7 @@ const submitHandler = async () => {
           .upload(
             `${useSupabaseUser().value?.id}/resources/${
               savedData[0].id
-            }.${file.value[0].name.split(".").at(-1)?.trim()}`,
+            }.${file_ext}`,
             file.value[0]
           );
         if (error) {
