@@ -111,7 +111,7 @@ const isLecturer = computed(() => {
   return useSupabaseUser().value?.user_metadata?.isInstructor;
 });
 
-var saveData = (function () {
+var saveData = function () {
   var a = document.createElement("a");
   document.body.appendChild(a);
   a.style = "display: none";
@@ -124,7 +124,7 @@ var saveData = (function () {
     a.click();
     window.URL.revokeObjectURL(url);
   };
-})();
+};
 
 const downloadFile = async (resource) => {
   const { data, error } = await supabaseClient.storage
