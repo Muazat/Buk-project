@@ -28,15 +28,15 @@ const credentialForm = reactive({
 
 async function addCredential() {
   try {
-    console.log({
-      title: credentialForm.fileName,
-    });
-
+    const file_ext = credentialForm.file
+      ? credentialForm.file[0].name.split(".").at(-1)?.trim()
+      : null;
     const { data: savedData, error } = await useSupabaseClientT
       .from("Credentials")
       .insert({
         title: credentialForm.fileName,
         has_attachment: credentialForm.file ? true : false,
+        file_ext,
       })
       .select("*");
 

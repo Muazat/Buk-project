@@ -49,6 +49,9 @@ const taskData = reactive({
 
 async function addAssignment() {
   try {
+    const file_ext = taskData.file
+      ? taskData.file[0].name.split(".").at(-1)?.trim()
+      : null;
     const { data: savedData, error } = await useSupabaseClient<Database>()
       .from("Assignments")
       .insert({
@@ -59,6 +62,7 @@ async function addAssignment() {
         priority: taskData.priority,
         has_attachement: taskData.file ? true : false,
         due_date: new Date(taskData.dueDate),
+        file_ext,
       })
       .select("*");
     if (error) {

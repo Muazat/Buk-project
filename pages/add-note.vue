@@ -39,6 +39,9 @@ const category = ref("");
 
 const submitHandler = async () => {
   try {
+    const file_ext = file.value
+      ? file.value[0].name.split(".").at(-1)?.trim()
+      : null;
     const { data: savedData, error } = await supabaseClient
       .from("Notes")
       .insert({
@@ -46,14 +49,13 @@ const submitHandler = async () => {
         description: description.value,
         has_attachment: file.value ? true : false,
         category: category.value,
+        file_ext,
       })
       .select("*");
     if (error) {
       console.log(error);
     }
     if (savedData) {
-      console.log(savedData, file.value);
-
       if (file.value) {
         const { data, error } = await supabaseClient.storage
           .from("files")
