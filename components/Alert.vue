@@ -7,7 +7,7 @@
         role="alert"
       >
         <Icon name="material-symbols:info" />
-        <div class="ml-3 text-sm font-medium">
+        <div class="mx-3 text-sm font-medium">
           <slot />
         </div>
         <button
@@ -15,6 +15,7 @@
           class="-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg bg-blue-50 p-1.5 text-blue-500 hover:bg-blue-200 focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700"
           data-dismiss-target="#alert-1"
           aria-label="Close"
+          @click="showAlert = false"
         >
           <Icon name="material-symbols:close-rounded" class="h-6 w-6" />
         </button>
@@ -40,5 +41,4 @@ watch(modelValue, (val) => {
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
