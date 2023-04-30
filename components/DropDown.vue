@@ -1,5 +1,8 @@
 <template>
   <div>
+    <button @click="useRouter().go(-1)">
+      <Icon name="material-symbols:arrow-back" class="mt-4 h-6 w-8" />
+    </button>
     <div class="absolute right-1 top-1 float-right mt-4 flex flex-col">
       <div class="mx-10">
         <div
