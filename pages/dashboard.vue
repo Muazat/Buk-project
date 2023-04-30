@@ -1,7 +1,12 @@
 <template>
   <div>
+    <Alert v-model="showAlert">Dashboard has been loaded successfully</Alert>
     <PageTitle>Dashboard</PageTitle>
-    <DashboardSumarry :noteCount="noteCount" :AssignmentCount="assignmentCount" :todoCount="todoCount" />
+    <DashboardSumarry
+      :noteCount="noteCount"
+      :AssignmentCount="assignmentCount"
+      :todoCount="todoCount"
+    />
 
     <div class="mt-16 md:flex">
       <div class="md:mx-6 md:basis-1/3">
