@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Alert v-model="showAlert">Resource has been added successfully</Alert>
     <PageTitle>Add Resources</PageTitle>
 
     <div class="md:ml-9" ref="body">
@@ -32,9 +33,13 @@ const supabaseClient = useSupabaseClient<Database>();
 const title = ref("");
 const description = ref("");
 const file = ref<FileList | null>(null);
+const showAlert = ref(false);
 
 const submitHandler = async () => {
   try {
+    const file_ext = file.value
+      ? file.value[0].name.split(".").at(-1)?.trim()
+      : null;
     const { data: savedData, error } = await supabaseClient
       .from("Lecturer's resources")
       .insert({
@@ -42,21 +47,20 @@ const submitHandler = async () => {
         description: description.value,
         has_attachment: file.value ? true : false,
         access_code: useRoute().params.slug,
+        file_ext,
       })
       .select("*");
     if (error) {
       console.log(error);
     }
     if (savedData) {
-      console.log(savedData, file.value);
-
       if (file.value) {
         const { data, error } = await supabaseClient.storage
           .from("lecturers-record")
           .upload(
             `${useSupabaseUser().value?.id}/resources/${
               savedData[0].id
-            }.${file.value[0].name.split(".").at(-1)?.trim()}`,
+            }.${file_ext}`,
             file.value[0]
           );
         if (error) {
@@ -64,7 +68,10 @@ const submitHandler = async () => {
         }
         if (data) {
           console.log(data);
+          showAlert.value = true;
         }
+      } else {
+        showAlert.value = true;
       }
     }
   } catch (error) {}
