@@ -1,22 +1,40 @@
 <template>
   <div class="mb-0 w-4/5 md:w-2/3">
-    <input
-      type="date"
-      class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-      id="exampleFormControlInput1"
-      placeholder=""
-      v-model="data"
-    />
+    <Datepicker
+      v-model="modelValue"
+      auto-apply
+      :enable-time-picker="false"
+      :format="format"
+      v-bind="$attrs"
+      placeholder="Select a date"
+    ></Datepicker>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useVModel } from "@vueuse/core";
-
-const props = defineProps<{
-  modelValue: string;
+import Datepicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+defineProps<{
+  modelValue?: Date | string;
 }>();
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits<{
+  (e: "update:modelValue", value: number): void;
+}>();
 
-const data = useVModel(props, "modelValue", emit);
+const format = (date) => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+const value = ref(0);
+const modelValue = computed({
+  get() {
+    return value.value;
+  },
+  set(val) {
+    value.value = val;
+    emit("update:modelValue", value.value);
+  },
+});
 </script>
