@@ -45,6 +45,7 @@
           </TableData>
         </tr>
         <TableEnd>
+          <!-- <button @click="refreshPage()">Refresh Page</button> -->
           <Pagination></Pagination>
         </TableEnd>
       </Table>
@@ -80,6 +81,7 @@ const deleteNote = async (id: number) => {
   if (data) {
     console.log(data);
   }
+  location.reload();
 };
 </script>
 
