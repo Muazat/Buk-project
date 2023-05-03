@@ -13,7 +13,7 @@
         <h5
           class="text-center font-bold text-gray-900 dark:text-white md:mt-2 md:text-2xl"
         >
-          {{ summary.value }}
+          {{ summary.value || 0 }}
         </h5>
       </NuxtLink>
     </div>
