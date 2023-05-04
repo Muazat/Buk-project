@@ -14,14 +14,14 @@
 
 <script setup lang="ts">
 defineProps<{
-  modelValue: string;
+  modelValue: string | number;
 }>();
 defineEmits(["update:modelValue"]);
 </script>
 
 <style lang="scss" scoped>
 .my_input {
-  @apply w-full rounded border border-solid border-primary py-2 px-3 focus:outline-primary;
+  @apply w-full rounded border border-solid border-primary px-3 py-2 focus:outline-primary;
   &.invalid {
     @apply border-warning;
   }
