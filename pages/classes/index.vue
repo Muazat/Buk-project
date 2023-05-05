@@ -50,15 +50,25 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { Database } from "~~/types/supabase";
 dayjs.extend(relativeTime);
 
+definePageMeta({
+  middleware: ["admin"],
+});
+
 const supabaseClient = useSupabaseClient<Database>();
 
-const { data: classes } = useAsyncData("notes", async () => {
-  const { data } = await supabaseClient
-    .from("Lecturer's classes")
-    .select("*")
-    .order("created_at", { ascending: false });
-  return data;
-});
+const { data: classes } = useAsyncData(
+  "classes",
+  async () => {
+    useSetAppLoader(true);
+    const { data } = await supabaseClient
+      .from("Lecturer's classes")
+      .select("*")
+      .order("created_at", { ascending: false });
+    useSetAppLoader(false);
+    return data;
+  },
+  { server: false }
+);
 
 const deleteNote = async (id: number) => {
   const { data, error } = await supabaseClient

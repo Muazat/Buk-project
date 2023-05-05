@@ -9,12 +9,39 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      "Accessed Courses": {
+        Row: {
+          access_code: string | null;
+          course_code: string | null;
+          course_title: string | null;
+          created_at: string | null;
+          id: number;
+          user_id: string | null;
+        };
+        Insert: {
+          access_code?: string | null;
+          course_code?: string | null;
+          course_title?: string | null;
+          created_at?: string | null;
+          id?: number;
+          user_id?: string | null;
+        };
+        Update: {
+          access_code?: string | null;
+          course_code?: string | null;
+          course_title?: string | null;
+          created_at?: string | null;
+          id?: number;
+          user_id?: string | null;
+        };
+      };
       Assignments: {
         Row: {
           category: string | null;
           content: string | null;
           created_at: string | null;
           due_date: string | null;
+          file_ext: string | null;
           has_attachement: boolean | null;
           id: number;
           priority: string | null;
@@ -27,6 +54,7 @@ export interface Database {
           content?: string | null;
           created_at?: string | null;
           due_date?: string | null;
+          file_ext?: string | null;
           has_attachement?: boolean | null;
           id?: number;
           priority?: string | null;
@@ -39,6 +67,7 @@ export interface Database {
           content?: string | null;
           created_at?: string | null;
           due_date?: string | null;
+          file_ext?: string | null;
           has_attachement?: boolean | null;
           id?: number;
           priority?: string | null;
@@ -50,6 +79,7 @@ export interface Database {
       Credentials: {
         Row: {
           created_at: string | null;
+          file_ext: string | null;
           has_attachment: boolean | null;
           id: number;
           title: string | null;
@@ -57,6 +87,7 @@ export interface Database {
         };
         Insert: {
           created_at?: string | null;
+          file_ext?: string | null;
           has_attachment?: boolean | null;
           id?: number;
           title?: string | null;
@@ -64,6 +95,7 @@ export interface Database {
         };
         Update: {
           created_at?: string | null;
+          file_ext?: string | null;
           has_attachment?: boolean | null;
           id?: number;
           title?: string | null;
@@ -104,15 +136,17 @@ export interface Database {
           access_code: string;
           created_at: string | null;
           description: string | null;
+          file_ext: string | null;
           has_attachment: boolean | null;
           id: number;
           title: string | null;
           user_id: string | null;
         };
         Insert: {
-          access_code: string | string[];
+          access_code: string;
           created_at?: string | null;
           description?: string | null;
+          file_ext?: string | null;
           has_attachment?: boolean | null;
           id?: number;
           title?: string | null;
@@ -122,6 +156,7 @@ export interface Database {
           access_code?: string;
           created_at?: string | null;
           description?: string | null;
+          file_ext?: string | null;
           has_attachment?: boolean | null;
           id?: number;
           title?: string | null;
@@ -133,6 +168,7 @@ export interface Database {
           category: string | null;
           created_at: string | null;
           description: string | null;
+          file_ext: string | null;
           has_attachment: boolean | null;
           id: number;
           title: string | null;
@@ -142,6 +178,7 @@ export interface Database {
           category?: string | null;
           created_at?: string | null;
           description?: string | null;
+          file_ext?: string | null;
           has_attachment?: boolean | null;
           id?: number;
           title?: string | null;
@@ -151,6 +188,7 @@ export interface Database {
           category?: string | null;
           created_at?: string | null;
           description?: string | null;
+          file_ext?: string | null;
           has_attachment?: boolean | null;
           id?: number;
           title?: string | null;

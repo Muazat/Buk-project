@@ -31,7 +31,7 @@ async function addCredential() {
     const file_ext = credentialForm.file
       ? credentialForm.file[0].name.split(".").at(-1)?.trim()
       : null;
-    const { data: savedData, error } = await useSupabaseClientT
+    const { data: savedData, error } = await useSupabaseClient<Database>()
       .from("Credentials")
       .insert({
         title: credentialForm.fileName,
@@ -47,8 +47,8 @@ async function addCredential() {
     if (savedData) {
       console.log(savedData, credentialForm.file);
       if (credentialForm.file) {
-        const { data, error } = await useSupabaseClientT.storage
-          .from("files")
+        const { data, error } = await useSupabaseClient<Database>()
+          .storage.from("files")
           .upload(
             `${useSupabaseUser().value?.id}/credentials/${
               savedData[0].id

@@ -30,6 +30,10 @@
 import { Database } from "~~/types/supabase";
 const supabaseClient = useSupabaseClient<Database>();
 
+definePageMeta({
+  middleware: ["admin"],
+});
+
 const title = ref("");
 const description = ref("");
 const file = ref<FileList | null>(null);

@@ -1,6 +1,12 @@
 <template>
-  <div>
-    <div class="absolute right-1 top-1 float-right mt-4 flex flex-col">
+  <div class="">
+    <button @click="useRouter().go(-1)">
+      <Icon
+        name="material-symbols:arrow-back"
+        class="absolute left-14 top-1 mt-4 h-6 w-8"
+      />
+    </button>
+    <div class="absolute right-1 top-1 float-right mr-4 mt-4 flex flex-col">
       <div class="mx-10">
         <div
           class="flex cursor-pointer items-center justify-center text-primary"

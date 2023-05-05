@@ -7,7 +7,7 @@
           >Muaxxa</span
         >
       </a>
-      <div class="items-centermd:order-2 flex">
+      <div class="flex items-center md:order-2">
         <button
           @click="backdropClickHandler"
           data-collapse-toggle="mobile-menu-2"
@@ -43,7 +43,7 @@
           <li>
             <a
               href="#"
-              class="block bg-tertiary py-2 pr-4 pl-3 text-center dark:text-white md:bg-transparent md:p-0 md:text-black"
+              class="block bg-tertiary py-2 pl-3 pr-4 text-center dark:text-white md:bg-transparent md:p-0 md:text-black"
               aria-current="page"
               >Home</a
             >
@@ -51,14 +51,14 @@
           <li>
             <a
               href="#"
-              class="block bg-tertiary py-2 pr-4 pl-3 text-center text-black hover:bg-blue-100 dark:hover:bg-blue-700 dark:hover:text-white md:bg-inherit md:p-0 md:text-white md:hover:bg-transparent md:hover:text-black md:dark:hover:bg-transparent md:dark:hover:text-white"
+              class="block bg-tertiary py-2 pl-3 pr-4 text-center text-black hover:bg-blue-100 dark:hover:bg-blue-700 dark:hover:text-white md:bg-inherit md:p-0 md:text-white md:hover:bg-transparent md:hover:text-black md:dark:hover:bg-transparent md:dark:hover:text-white"
               >Sign in</a
             >
           </li>
           <li>
             <a
               href="#"
-              class="block bg-tertiary py-2 pr-4 pl-3 text-center text-black hover:bg-blue-100 dark:border-blue-700 dark:hover:text-white md:bg-inherit md:p-0 md:text-white md:hover:bg-transparent md:hover:text-black md:dark:hover:bg-transparent md:dark:hover:text-white"
+              class="block bg-tertiary py-2 pl-3 pr-4 text-center text-black hover:bg-blue-100 dark:border-blue-700 dark:hover:text-white md:bg-inherit md:p-0 md:text-white md:hover:bg-transparent md:hover:text-black md:dark:hover:bg-transparent md:dark:hover:text-white"
               >Sign up</a
             >
           </li>

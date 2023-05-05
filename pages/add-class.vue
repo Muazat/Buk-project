@@ -4,7 +4,7 @@
     <form @submit.prevent="submitHandler">
       <div class="md:ml-9" ref="body">
         <div class="mb-2 mt-4 font-semibold">Course Code</div>
-        <TextInput v-model="courseCode"></TextInput>
+        <TextInput v-model="courseCode" required></TextInput>
         <div class="mb-2 mt-4 font-semibold">Course Title</div>
         <TextInput v-model="course_name"></TextInput>
 
@@ -25,6 +25,10 @@
 <script setup lang="ts">
 import { Database } from "~~/types/supabase";
 const supabaseClient = useSupabaseClient<Database>();
+
+definePageMeta({
+  middleware: ["admin"],
+});
 
 const course_name = ref("");
 const description = ref("");
