@@ -31,6 +31,7 @@
 
       <CgpaHeading></CgpaHeading>
       <CgpaAdd
+        ref="cgpaAdd"
         @updated="addCourse"
         v-for="i in numberOfCourses"
         :index="i"
@@ -106,7 +107,7 @@ const semester = ref(1);
 const semesterDisplay = ref(1);
 let count = 0;
 const numberOfCourses = ref(1);
-const allCourses = reactive({});
+let allCourses = reactive({});
 const addCourse = (course, index) => {
   allCourses[index] = course;
 };
@@ -117,6 +118,7 @@ const allTotal = {
   calgrade: [],
   total: [],
 };
+const cgpaAdd = ref(null);
 function convert(g) {
   if (g == "A") {
     return 5;
@@ -180,8 +182,9 @@ function undo() {
   total.value = 0;
   allTotal.calgrade = [];
   allTotal.total = [];
-  allCourses.value = {};
+  allCourses = {};
   semesterDisplay.value = 1;
+  cgpaAdd.value[0].clearCourseInfo();
 }
 function nextSemesterCal() {
   if (semester.value != years.value * 2) {
@@ -192,12 +195,14 @@ function nextSemesterCal() {
     gpa.value = 0;
     cgpa.value = 0;
     total.value = 0;
-    allCourses.value = {};
+    allCourses = {};
     level.value = !level.value;
     if (semester.value % 2 == 1) {
       semesterDisplay.value++;
     }
+    cgpaAdd.value[0].clearCourseInfo();
   }
+  // console.log(cgpaAdd.value[0]);
   // else{
   //   // evaluate();
   // }

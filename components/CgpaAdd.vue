@@ -30,7 +30,6 @@
 </template>
 <script setup lang="ts">
 const categoryOptions = ["A", "B", "C", "D", "E", "F"];
-// const courseCode = ref("");
 const showAdd = ref(true);
 const index = defineProp("index");
 
@@ -39,6 +38,11 @@ const courseInfo = reactive({
   grade: "",
   showAdd,
 });
+const clearCourseInfo = () => {
+  courseInfo.creditUnit = "";
+  courseInfo.grade = "";
+};
+
 const emit = defineEmits(["updated"]);
 watch(
   courseInfo,
@@ -47,4 +51,7 @@ watch(
   },
   { deep: true }
 );
+defineExpose({
+  clearCourseInfo,
+});
 </script>
