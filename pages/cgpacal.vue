@@ -128,8 +128,10 @@ function convert(g) {
     return 3;
   } else if (g == "D") {
     return 2;
-  } else {
+  } else if (g == "E") {
     return 1;
+  } else {
+    return 0;
   }
 }
 function sum(arr) {
