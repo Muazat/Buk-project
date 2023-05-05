@@ -150,20 +150,16 @@ const { data: resources, refresh } = useAsyncData(
   "resources",
   async () => {
     useSetAppLoader(true);
-    const { data } =
-      course_access_code.value &&
-      (await supabaseClient
-        .from("Lecturer's resources")
-        .select("*")
-        .eq("access_code", course_access_code.value)
-        .order("created_at", { ascending: false }));
+    const { data } = await supabaseClient
+      .from("Lecturer's resources")
+      .select("*")
+      .eq("access_code", course_access_code.value)
+      .order("created_at", { ascending: false });
 
-    const { data: courseInfo } =
-      course_access_code.value &&
-      (await supabaseClient
-        .from("Lecturer's classes")
-        .select("*")
-        .eq("shared_code", course_access_code.value));
+    const { data: courseInfo } = await supabaseClient
+      .from("Lecturer's classes")
+      .select("*")
+      .eq("shared_code", course_access_code.value);
     if (courseInfo) {
       classInfo.value = courseInfo[0];
     }
@@ -183,7 +179,7 @@ const { data: resources, refresh } = useAsyncData(
     if (
       !isLecturer.value &&
       accessedCourses.value &&
-      data &&
+      data?.length &&
       course_access_code.value &&
       classInfo.value
     ) {
