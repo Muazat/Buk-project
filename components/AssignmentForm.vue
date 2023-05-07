@@ -103,6 +103,7 @@ async function addAssignment() {
           });
           file.value = null;
           useSetAppLoader(false);
+          useSetAppAlert(true, "Assignment Added");
         }
       } else {
         Object.keys(taskData).forEach((key) => {
@@ -110,12 +111,14 @@ async function addAssignment() {
         });
         file.value = null;
         useSetAppLoader(false);
+        useSetAppAlert(true, "Assignment Added");
       }
     }
   } catch (error) {}
 }
 async function editAssignment() {
   try {
+    useSetAppLoader(true, "Updating Assignment");
     const file_ext = file.value
       ? file.value[0].name.split(".").at(-1)?.trim()
       : null;
@@ -147,8 +150,22 @@ async function editAssignment() {
           console.log(error);
         }
         if (data) {
-          console.log(data);
+          // clear form iteratively
+          Object.keys(taskData).forEach((key) => {
+            taskData[key as keyof typeof taskData] = "";
+          });
+          file.value = null;
+          useSetAppAlert(true, "Assignment Updated");
+          useSetAppLoader(false);
+          useRouter().push("/assignments");
         }
+      } else {
+        Object.keys(taskData).forEach((key) => {
+          taskData[key as keyof typeof taskData] = "";
+        });
+        useSetAppLoader(false);
+        useSetAppAlert(true, "Assignment Updated");
+        useRouter().push("/assignments");
       }
     }
   } catch (error) {}
