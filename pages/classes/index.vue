@@ -63,7 +63,8 @@ const { data: classes } = useAsyncData(
     const { data } = await supabaseClient
       .from("Lecturer's classes")
       .select("*")
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: false })
+      .eq("user_id", useSupabaseUser()?.value.id);
     useSetAppLoader(false);
     return data;
   },
@@ -84,6 +85,7 @@ const deleteNote = async (id: number) => {
 };
 const copyToClipboard = (text: string) => {
   navigator.clipboard.writeText(text);
+  useSetAppAlert(true, "Copied to clipboard", "success");
 };
 </script>
 
