@@ -25,20 +25,21 @@
           class="py-1 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdownDefault"
         >
-          <li>
+          <!-- <li>
             <NuxtLink
               to=""
               @click="close"
               class="block cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >Notifications</NuxtLink
             >
-          </li>
+          </li> -->
           <li>
             <NuxtLink
-              to=""
+              to="profile"
               @click="close"
               class="block cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Profile</NuxtLink
+            >
+              Profile</NuxtLink
             >
           </li>
           <li>

@@ -60,9 +60,7 @@
           </label>
         </div>
         <Mbutton class="btn" type="submit"> SignUp </Mbutton>
-        <p :class="{ 'text-red-500': isErr }">
-          {{ msg }}
-        </p>
+        <Alert v-model="isErr">{{ msg }}</Alert>
       </form>
     </main>
   </div>
