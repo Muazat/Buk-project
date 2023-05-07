@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="showAdd"
-    class="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"
+    class="mt-2 grid grid-cols-3 gap-x-6 gap-y-8 sm:grid-cols-6"
   >
     <!-- <div class="sm:col-span-2 sm:col-start-1">
             <div class="mt-2">
