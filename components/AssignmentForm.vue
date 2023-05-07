@@ -122,12 +122,13 @@ async function editAssignment() {
 
     const { data: savedData, error } = await useSupabaseClient<Database>()
       .from("Assignments")
-      .upsert({
+      .update({
         ...taskData,
         has_attachement: file.value ? true : false,
         due_date: new Date(taskData.due_date),
         file_ext,
       })
+      .eq("id", store.getLoadedAssignment?.id)
       .select("*");
     if (error) {
       console.log(error);
