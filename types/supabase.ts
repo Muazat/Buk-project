@@ -195,6 +195,38 @@ export interface Database {
           user_id?: string | null;
         };
       };
+      Tasks: {
+        Row: {
+          created_at: string | null;
+          description: string | null;
+          due_date: string | null;
+          id: number;
+          priority: string | null;
+          status: string | null;
+          time: string | null;
+          user_id: string | null;
+        };
+        Insert: {
+          created_at?: string | null;
+          description?: string | null;
+          due_date?: string | null;
+          id?: number;
+          priority?: string | null;
+          status?: string | null;
+          time?: string | null;
+          user_id?: string | null;
+        };
+        Update: {
+          created_at?: string | null;
+          description?: string | null;
+          due_date?: string | null;
+          id?: number;
+          priority?: string | null;
+          status?: string | null;
+          time?: string | null;
+          user_id?: string | null;
+        };
+      };
     };
     Views: {
       [_ in never]: never;
