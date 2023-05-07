@@ -1,10 +1,33 @@
 <template>
   <div class="mb-0 w-4/5 md:w-2/3">
-    <input
-      type="time"
-      class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-      id="exampleFormControlInput1"
-      placeholder=""
-    />
+    <Datepicker
+      v-model="modelValue"
+      auto-apply
+      time-picker
+      v-bind="$attrs"
+      placeholder="Select time"
+    ></Datepicker>
   </div>
 </template>
+
+<script setup lang="ts">
+import Datepicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+defineProps<{
+  modelValue?: {};
+}>();
+const emit = defineEmits<{
+  (e: "update:modelValue", value: number): void;
+}>();
+
+const value = ref(0);
+const modelValue = computed({
+  get() {
+    return value.value;
+  },
+  set(val) {
+    value.value = val;
+    emit("update:modelValue", value.value);
+  },
+});
+</script>
