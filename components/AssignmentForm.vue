@@ -33,20 +33,23 @@
 </template>
 
 <script setup lang="ts">
+import { useMainStore } from "~~/store";
+
 const categoryOptions = ["Category", "None"];
 const statusOptions = ["Started", "Doing", "Done"];
 const priorityOptions = ["High", "Medium", "Low"];
+const store = useMainStore();
 
 const showAlert = ref(false);
 
 const file = ref(null as FileList | null);
 const taskData = reactive({
-  title: "",
-  content: "",
-  status: "",
-  priority: "",
-  due_date: "",
-  category: "",
+  title: store.getLoadedAssignment?.title || "",
+  content: store.getLoadedAssignment?.content || "",
+  status: store.getLoadedAssignment?.status || "",
+  priority: store.getLoadedAssignment?.priority || "",
+  due_date: store.getLoadedAssignment?.due_date || "",
+  category: store.getLoadedAssignment?.category || "",
 });
 
 const { isEdit } = definePropsRefs({
