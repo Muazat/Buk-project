@@ -6,6 +6,7 @@ export const useMainStore = defineStore("main", {
   state: () => ({
     loadedAssignment: {},
     loadedNote: {},
+    loadedTask: {},
   }),
   // optional getters
   getters: {
@@ -15,6 +16,9 @@ export const useMainStore = defineStore("main", {
     getLoadedNote(state) {
       return state.loadedNote;
     },
+    getLoadedTask(state) {
+      return state.loadedTask;
+    },
   },
   // optional actions
   actions: {
@@ -23,6 +27,9 @@ export const useMainStore = defineStore("main", {
     },
     setLoadedNote(note) {
       this.loadedNote = note;
+    },
+    setLoadedTask(task) {
+      this.loadedTask = task;
     },
   },
   persist: true,
