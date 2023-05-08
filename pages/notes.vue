@@ -38,7 +38,10 @@
               />
               <Icon
                 name="ic:baseline-delete"
-                @click="deleteNote(note.id)"
+                @click="
+                  showConfirmModal = true;
+                  documentId = note.id;
+                "
                 class="h-6 w-6 cursor-pointer text-red-500 hover:text-red-300"
               />
             </div>
@@ -49,6 +52,41 @@
           <Pagination></Pagination>
         </TableEnd>
       </Table>
+      <Modal
+        v-if="showConfirmModal"
+        @close="
+          showConfirmModal = false;
+          documentId = null;
+        "
+      >
+        <template #header>
+          <h3 class="text-2xl font-semibold">Confirm Deletion</h3>
+        </template>
+        <template #default>
+          <div class="">
+            <p class="p-0">Are you sure you want to delete this assignment?</p>
+          </div>
+        </template>
+        <template #footer>
+          <div class="flex items-center justify-end gap-4 px-4 py-3">
+            <Button
+              class="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
+              @click="
+                showConfirmModal = false;
+                documentId = null;
+              "
+            >
+              Cancel
+            </Button>
+            <Button
+              class="rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700"
+              @click="deleteNote"
+            >
+              Confirm
+            </Button>
+          </div>
+        </template>
+      </Modal>
     </div>
   </div>
 </template>
@@ -61,27 +99,38 @@ dayjs.extend(relativeTime);
 
 const supabaseClient = useSupabaseClient<Database>();
 
-const { data: notes } = useAsyncData("notes", async () => {
-  const { data } = await supabaseClient
-    .from("Notes")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .limit(10);
-  return data;
-});
-
-const deleteNote = async (id: number) => {
-  const { data, error } = await supabaseClient
+const { data: notes } = useAsyncData(
+  "notes",
+  async () => {
+    useSetAppLoader(true, "Loading notes...");
+    const { data } = await supabaseClient
+      .from("Notes")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(10);
+    useSetAppLoader(false, "Loading notes...");
+    return data;
+  },
+  { server: false }
+);
+const showConfirmModal = ref(false);
+const documentId = ref<Number | null>(null);
+const deleteNote = async () => {
+  showConfirmModal.value = false;
+  useSetAppLoader(true, "Deleting note...");
+  const { error, status } = await supabaseClient
     .from("Notes")
     .delete()
-    .match({ id });
+    .match({ id: documentId.value });
+  useSetAppLoader(false);
   if (error) {
-    console.log(error);
+    useSetAppAlert(true, error.message, "error");
   }
-  if (data) {
-    console.log(data);
+  if (status === 204) {
+    // await refresh();
+    location.reload();
+    documentId.value = null;
   }
-  location.reload();
 };
 </script>
 
