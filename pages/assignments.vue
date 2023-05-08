@@ -40,18 +40,18 @@
           </TableData>
           <TableData>
             <div class="inline-flex gap-6">
-              <nuxt-link to="view-assignment">
+              <button @click="view(assignment)">
                 <Icon
                   name="mdi:eye-arrow-right"
                   class="h-6 w-6 cursor-pointer text-blue-500 hover:text-blue-300"
                 />
-              </nuxt-link>
-              <nuxt-link to="edit-assignment">
+              </button>
+              <button @click="edit(assignment)">
                 <Icon
                   name="material-symbols:edit-document"
                   class="h-6 w-6 cursor-pointer text-blue-500 hover:text-blue-300"
                 />
-              </nuxt-link>
+              </button>
               <Icon
                 name="ic:baseline-delete"
                 @click="
@@ -110,6 +110,7 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { useMainStore } from "~~/store";
 import { Database } from "~~/types/supabase";
 dayjs.extend(relativeTime);
 
@@ -147,6 +148,16 @@ const deleteNote = async () => {
     await refresh();
     documentId.value = null;
   }
+};
+
+const store = useMainStore();
+const view = (assignment) => {
+  store.setLoadedAssignment(assignment);
+  useRouter().push("/view-assignment");
+};
+const edit = (assignment) => {
+  store.setLoadedAssignment(assignment);
+  useRouter().push("/edit-assignment");
 };
 </script>
 
