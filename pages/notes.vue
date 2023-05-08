@@ -99,7 +99,7 @@ dayjs.extend(relativeTime);
 
 const supabaseClient = useSupabaseClient<Database>();
 
-const { data: notes } = useAsyncData(
+const { data: notes, refresh } = useAsyncData(
   "notes",
   async () => {
     useSetAppLoader(true, "Loading notes...");
@@ -127,8 +127,7 @@ const deleteNote = async () => {
     useSetAppAlert(true, error.message, "error");
   }
   if (status === 204) {
-    // await refresh();
-    location.reload();
+    await refresh();
     documentId.value = null;
   }
 };
