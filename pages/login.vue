@@ -3,11 +3,9 @@
     <h1 class="mt-4 text-center text-2xl font-bold text-primary">
       Welcome Back!
     </h1>
+    <Alert v-model="showAlert">Wrong Email or Password</Alert>
     <div class="mt-3 flex justify-center font-semibold text-primary">
       <main class="rounded border border-primary bg-tertiary md:p-6">
-        <p :class="{ 'text-red-500': isErr }">
-          {{ msg }}
-        </p>
         <form
           class="login-form"
           action=""
@@ -47,14 +45,12 @@ import MInput from "~~/components/MInput.vue";
 
 const { auth } = useSupabaseAuthClient();
 const user = useSupabaseUser();
-
+const showAlert = ref(false);
 definePageMeta({
   layout: "website",
 });
 const email = ref("");
 const password = ref("");
-const msg = ref("");
-const isErr = ref(false);
 async function loginUser() {
   try {
     const AuthUser = await auth.signInWithPassword({
@@ -66,8 +62,7 @@ async function loginUser() {
         AuthUser?.data?.session.refresh_token;
       useCookie("sb-access-token").value = AuthUser?.data?.session.access_token;
     } else {
-      msg.value = "Incorrect Email or Password";
-      isErr.value = true;
+      showAlert.value = true;
       return;
     }
     isErr.value = false;
