@@ -8,5 +8,6 @@ export default defineNuxtConfig({
     "@vue-macros/nuxt",
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
+    "nuxt-typed-router",
   ],
 });

@@ -82,7 +82,7 @@ async function getCounts() {
     .from("Assignments")
     .select("*", { count: "exact", head: true });
   const todoCall = supabaseClient
-    .from("Notes")
+    .from("Tasks")
     .select("*", { count: "exact", head: true });
   Promise.allSettled([noteCall, AssignmentCall, todoCall]).then((res) => {
     noteCount.value = res[0].value?.count;
