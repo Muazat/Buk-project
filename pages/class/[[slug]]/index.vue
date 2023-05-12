@@ -94,7 +94,14 @@
                 ]"
               >
                 <button
-                  @click="downloadFile(resource)"
+                  @click="
+                    useDownloadFile(
+                      resource,
+                      'resources',
+                      'lecturers-record',
+                      resources[0].user_id
+                    )
+                  "
                   title="Download File"
                   :disabled="!resource.has_attachment && !resource.file_ext"
                   :class="[
@@ -221,21 +228,12 @@ const isLecturer = computed(() => {
 });
 
 const downloadFile = async (resource) => {
-  if (resources.value && resources.value[0].user_id) {
-    useSetAppLoader(true, "Downloading File");
-    const { data, error } = await supabaseClient.storage
-      .from("lecturers-record")
-      .download(
-        `${resources.value[0].user_id}/resources/${resource.id}.${resource.file_ext}`
-      );
-    useSetAppLoader(false);
-    if (error) {
-      useSetAppAlert(true, error.message, "error");
-    }
-    if (data) {
-      useSaveData(data, `${resource.id}.${resource.file_ext}`);
-    }
-  }
+  useDownloadFile(
+    resource,
+    "resources",
+    "lecturers-record",
+    resources.value[0].user_id
+  );
 };
 </script>
 

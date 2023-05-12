@@ -89,10 +89,10 @@
 </template>
 
 <script setup lang="ts">
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import { useMainStore } from "~~/store";
 import { Database } from "~~/types/supabase";
+import relativeTime from "dayjs/plugin/relativeTime";
+import dayjs from "dayjs";
 dayjs.extend(relativeTime);
 
 const supabaseClient = useSupabaseClient<Database>();

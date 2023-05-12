@@ -2,7 +2,6 @@
   <div class="mb-0 w-4/5 md:w-2/3">
     <Datepicker
       v-model="modelValue"
-      auto-apply
       time-picker
       v-bind="$attrs"
       placeholder="Select time"
