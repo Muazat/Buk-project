@@ -104,6 +104,7 @@ async function addAssignment() {
           file.value = null;
           useSetAppLoader(false);
           useSetAppAlert(true, "Assignment Added");
+          navigateTo("/assignments");
         }
       } else {
         Object.keys(taskData).forEach((key) => {
@@ -112,6 +113,7 @@ async function addAssignment() {
         file.value = null;
         useSetAppLoader(false);
         useSetAppAlert(true, "Assignment Added");
+        navigateTo("/assignments");
       }
     }
   } catch (error) {}
@@ -127,9 +129,15 @@ async function editAssignment() {
       .from("Assignments")
       .update({
         ...taskData,
-        has_attachement: file.value ? true : false,
+        has_attachement: useMainStore().getLoadedAssignment?.has_attachement
+          ? true
+          : file.value
+          ? true
+          : false,
         due_date: new Date(taskData.due_date),
-        file_ext,
+        file_ext: file_ext
+          ? file_ext
+          : useMainStore().getLoadedAssignment?.file_ext,
       })
       .eq("id", store.getLoadedAssignment?.id)
       .select("*");
