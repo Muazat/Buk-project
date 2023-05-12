@@ -23,9 +23,9 @@
               :disabled="!inputDisabled"
             >
             </TextInput>
-            <Button class="col-span-1 col-start-4" type="button" @click="undo"
-              >Change Year</Button
-            >
+            <button class="col-span-1 col-start-4" type="button" @click="undo">
+              Change Year
+            </button>
           </div>
         </div>
       </div>

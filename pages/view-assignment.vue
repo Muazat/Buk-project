@@ -87,10 +87,25 @@
     <div class="my-3 flex flex-col font-bold">
       <div>Attachments</div>
       <div class="flex">
-        <div class="mr-6 font-normal text-primary">
+        <button
+          @click="
+            useDownloadFile(useMainStore().loadedAssignment, 'assignment')
+          "
+          title="Download File"
+          :disabled="
+            !useMainStore().loadedAssignment.has_attachement &&
+            !useMainStore().loadedAssignment.file_ext
+          "
+          :class="[
+            useMainStore().loadedAssignment.has_attachement &&
+            useMainStore().loadedAssignment.file_ext
+              ? 'cursor-pointer text-blue-500 hover:text-blue-300'
+              : '!pointer-events-none text-gray-300',
+          ]"
+        >
           Download Attachment
-          <Icon name="mdi:download-box" />
-        </div>
+          <Icon name="mdi:file-download" class="h-6 w-6" />
+        </button>
       </div>
     </div>
   </div>

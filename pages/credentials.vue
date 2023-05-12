@@ -12,13 +12,30 @@
         <TableData class="font-bold">Action</TableData>
       </TableHead>
       <tr v-for="credential in credentials" :key="credential.id" class="border">
-        <TableData class="font-semibold text-green-500">
-          <NuxtLink to="view-credential">
-            <Icon
-              name="material-symbols:attach-file-add-rounded"
-              class="h-6 w-6 text-green-600"
-            />
-          </NuxtLink>
+        <TableData>
+          <div class="inline-flex items-center">
+            <div
+              class="mr-6 font-bold text-blue-500 hover:text-blue-300"
+              :class="[
+                credential.has_attachment && credential.file_ext
+                  ? 'cursor-pointer text-blue-500 hover:text-blue-300'
+                  : 'cursor-not-allowed text-gray-300',
+              ]"
+            >
+              <button
+                @click="useDownloadFile(credential, 'credentials')"
+                title="Download File"
+                :disabled="!credential.has_attachment && !credential.file_ext"
+                :class="[
+                  credential.has_attachment && credential.file_ext
+                    ? 'cursor-pointer text-blue-500 hover:text-blue-300'
+                    : '!pointer-events-none text-gray-300',
+                ]"
+              >
+                <Icon name="mdi:file-download" class="h-6 w-6" />
+              </button>
+            </div>
+          </div>
         </TableData>
         <TableData>{{ credential.title }}</TableData>
         <TableData>

@@ -18,16 +18,20 @@
             <TableData class="font-bold"> Description</TableData>
           </TableHead>
           <tbody>
-            <!-- <tr class="border">
-              <TableData>11/2/2023</TableData>
-              <TableData>2:00</TableData>
-              <TableData>submit android</TableData>
+            <tr
+              class="border"
+              v-for="(schedule, index) in latestSchedule"
+              :key="index"
+            >
+              <TableData>
+                {{ dayjs(schedule.due_date).format("DD/MM/YY") }}
+              </TableData>
+              <TableData>
+                {{ JSON.parse(schedule.time).hours }} :
+                {{ JSON.parse(schedule.time).minutes }}</TableData
+              >
+              <TableData>{{ schedule.description }}</TableData>
             </tr>
-            <tr class="border">
-              <TableData>11/2/2023</TableData>
-              <TableData>2:00</TableData>
-              <TableData>submit android</TableData>
-            </tr> -->
             <TableEnd>
               <NuxtLink to="todo" class="font-light text-primary">
                 see more
@@ -38,7 +42,7 @@
       </div>
 
       <div class="mt-9 md:mt-0 md:basis-3/5">
-        <h1 class="text-left font-bold">Priority</h1>
+        <h1 class="text-left font-bold">Top 5 Priorities</h1>
         <Table>
           <TableHead>
             <TableData class="font-bold">Priority</TableData>
@@ -47,12 +51,26 @@
             <TableData class="font-bold">Status</TableData>
           </TableHead>
           <tbody>
-            <!-- <tr class="border">
-              <TableData><Priority class="bg-red-400"></Priority></TableData>
-              <TableData>submit android</TableData>
-              <TableData>1/2/2019</TableData>
-              <TableData>Done</TableData>
-            </tr> -->
+            <tr class="border" v-for="(priority, index) in sortedPriority">
+              <TableData>
+                <Priority
+                  :class="
+                    priority.priority === 'High'
+                      ? 'bg-red-500'
+                      : priority.priority === 'Medium'
+                      ? 'bg-yellow-500'
+                      : 'bg-green-500'
+                  "
+                ></Priority>
+              </TableData>
+              <TableData>
+                {{ priority.description ?? priority.title }}
+              </TableData>
+              <TableData>
+                {{ dayjs(priority.due_date).format("DD/MM/YY") }}
+              </TableData>
+              <TableData>{{ priority.status }}</TableData>
+            </tr>
             <TableEnd>
               <NuxtLink class="font-light text-primary" to="priorities">
                 see more
@@ -67,6 +85,9 @@
 
 <script setup lang="ts">
 import { Database } from "~~/types/supabase";
+import relativeTime from "dayjs/plugin/relativeTime";
+import dayjs from "dayjs";
+dayjs.extend(relativeTime);
 const supabaseClient = useSupabaseClient<Database>();
 
 const showAlert = ref(false);
@@ -74,24 +95,49 @@ const showAlert = ref(false);
 const noteCount = ref<number | null>(0);
 const assignmentCount = ref<number | null>(0);
 const todoCount = ref<number | null>(0);
+const latestSchedule = ref([]);
+const latestAssignment = ref([]);
 async function getCounts() {
   const noteCall = supabaseClient
     .from("Notes")
     .select("*", { count: "exact", head: true });
+
   const AssignmentCall = supabaseClient
     .from("Assignments")
-    .select("*", { count: "exact", head: true });
+    .select("*", { count: "exact" })
+    .neq("status", "Done")
+    .limit(5);
+
   const todoCall = supabaseClient
     .from("Tasks")
-    .select("*", { count: "exact", head: true });
+    .select("*", { count: "exact" })
+    .order("due_date")
+    .neq("status", "Done")
+    .limit(5);
   Promise.allSettled([noteCall, AssignmentCall, todoCall]).then((res) => {
+    console.log({ res });
+
     noteCount.value = res[0].value?.count;
     assignmentCount.value = res[1].value?.count;
     todoCount.value = res[2].value?.count;
+    latestSchedule.value = res[2].value.data;
+    latestAssignment.value = res[1].value.data;
     showAlert.value = true;
   });
 }
 getCounts();
+
+const sortedPriority = computed(() => {
+  // merge latestSchedule and latestAssignment and sort them by priority [High, Medium, Low]
+  const merged = [...latestSchedule.value, ...latestAssignment.value];
+  return merged.sort((a, b) => {
+    if (a.priority === "High") return -1;
+    if (a.priority === "Medium" && b.priority === "Low") return -1;
+    return 1;
+  }).length > 5
+    ? merged.slice(0, 5)
+    : merged;
+});
 </script>
 
 <style lang="scss" scoped></style>

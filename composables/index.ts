@@ -31,3 +31,24 @@ export const useSaveData = (blob: Blob, fileName: string) => {
   document.body.removeChild(link);
   window.URL.revokeObjectURL(url);
 };
+
+export const useDownloadFile = async (
+  resource: { id: number; file_ext: string },
+  folder: String,
+  bucket: string = "files",
+  folderId = useSupabaseUser().value.id
+) => {
+  if (resource.id && resource.file_ext) {
+    useSetAppLoader(true, "Downloading File");
+    const { data, error } = await useSupabaseClient()
+      .storage.from(bucket)
+      .download(`${folderId}/${folder}/${resource.id}.${resource.file_ext}`);
+    useSetAppLoader(false);
+    if (error) {
+      useSetAppAlert(true, error.message, "error");
+    }
+    if (data) {
+      useSaveData(data, `${resource.id}.${resource.file_ext}`);
+    }
+  }
+};

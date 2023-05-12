@@ -76,7 +76,11 @@ const studentsAppSection = [
     name: "Todo",
     icon: "fluent:task-list-square-ltr-20-regular",
   },
-  { slug: "calender", name: "Time table", icon: "fluent:calendar-20-regular" },
+  {
+    slug: "priorities",
+    name: "Priorities",
+    icon: "fluent:calendar-20-regular",
+  },
   {
     slug: "credentials",
     name: "Credentials",

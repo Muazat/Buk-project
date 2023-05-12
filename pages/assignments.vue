@@ -21,14 +21,29 @@
           class="border"
         >
           <TableData>
-            <div class="inline-flex">
-              <div class="mr-6 font-bold text-blue-500 hover:text-blue-300">
-                <nuxt-link to="view-assignment">
-                  <Icon
-                    name="material-symbols:attach-file-add-rounded"
-                    class="h-6 w-6 text-green-600"
-                  />
-                </nuxt-link>
+            <div class="inline-flex items-center">
+              <div
+                class="mr-6 font-bold text-blue-500 hover:text-blue-300"
+                :class="[
+                  assignment.has_attachement && assignment.file_ext
+                    ? 'cursor-pointer text-blue-500 hover:text-blue-300'
+                    : 'cursor-not-allowed text-gray-300',
+                ]"
+              >
+                <button
+                  @click="useDownloadFile(assignment, 'assignment')"
+                  title="Download File"
+                  :disabled="
+                    !assignment.has_attachement && !assignment.file_ext
+                  "
+                  :class="[
+                    assignment.has_attachement && assignment.file_ext
+                      ? 'cursor-pointer text-blue-500 hover:text-blue-300'
+                      : '!pointer-events-none text-gray-300',
+                  ]"
+                >
+                  <Icon name="mdi:file-download" class="h-6 w-6" />
+                </button>
               </div>
             </div>
           </TableData>
