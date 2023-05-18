@@ -35,7 +35,7 @@
 <script setup lang="ts">
 import { useMainStore } from "~~/store";
 
-const categoryOptions = ["Category", "None"];
+const categoryOptions = ["Individual", "Group", "Research", "Personal"];
 const statusOptions = ["Started", "Doing", "Done"];
 const priorityOptions = ["High", "Medium", "Low"];
 const store = useMainStore();
