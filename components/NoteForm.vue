@@ -20,7 +20,7 @@
       class="float-right mb-10 bg-green-500 p-2 font-semibold text-white"
       @click="submitHandler"
     >
-      {{ isEdit ? "EDIT NOTE" : "ADD NOTE" }}}
+      {{ isEdit ? "EDIT NOTE" : "ADD NOTE" }}
     </AddButton>
     <!-- work on this code to add categories to options easily -->
     <!-- <div class="hidden opacity-100 " ref="category">
