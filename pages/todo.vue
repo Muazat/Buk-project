@@ -23,13 +23,13 @@
 
           <TableData>
             <div class="inline-flex gap-6">
-              <button @click="view(task)">
+              <button @click="">
                 <Icon
                   name="mdi:eye-arrow-right"
                   class="h-6 w-6 cursor-pointer text-blue-500 hover:text-blue-300"
                 />
               </button>
-              <button @click="edit(task)">
+              <button @click="">
                 <Icon
                   name="material-symbols:edit-document"
                   class="h-6 w-6 cursor-pointer text-blue-500 hover:text-blue-300"
