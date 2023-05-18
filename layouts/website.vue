@@ -17,11 +17,11 @@
           ></path>
         </svg>
       </button>
-      <p class="text-lg font-bold text-white md:hidden">Muaxxa</p>
+      <p class="text-lg font-bold text-white md:hidden">Student PA</p>
       <nav class="main-header__nav">
         <ul class="main-header__item-list">
           <li class="main-header__item">
-            <NuxtLink class="active muaxxa" to="/">Muaxxa</NuxtLink>
+            <NuxtLink class="active muaxxa" to="/">Student PA</NuxtLink>
           </li>
         </ul>
         <ul class="main-header__item-list">
