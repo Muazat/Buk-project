@@ -92,14 +92,22 @@ const studentsAppSection = [
     icon: "fluent:calculator-multiple-20-regular",
   },
 ];
+const lecturerAppSection = studentsAppSection
+  .filter((section) => section.slug !== "credentials")
+  .map((section) => {
+    if (section.slug === "assignments") {
+      return {
+        slug: "classes",
+        name: "Classes",
+        icon: "fluent:people-20-regular",
+      };
+    }
+    if (section.slug === "credentials") {
+      return;
+    }
+    return section;
+  });
 
-const lecturerAppSection = [
-  {
-    slug: "classes",
-    name: "Classes",
-    icon: "fluent:people-20-regular",
-  },
-];
 const appSections = computed(() => {
   const user = useSupabaseUser();
   if (user.value?.user_metadata?.isInstructor) {

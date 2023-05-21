@@ -30,9 +30,17 @@
           <TableData class="font-bold">Course TItle</TableData>
         </TableHead>
         <tr v-for="classInfo in accessedCourses" class="border">
-          <TableData class="whitespace-nowrap">{{
-            classInfo.access_code
-          }}</TableData>
+          <TableData
+            class="cursor-pointer whitespace-nowrap hover:opacity-75"
+            @click="useCopyToClipboard(classInfo.access_code)"
+          >
+            {{ classInfo.access_code }}
+            <Icon
+              name="ic:round-file-copy"
+              class="mr-1 h-6 w-6 cursor-pointer text-primary"
+            />
+          </TableData>
+
           <TableData class="whitespace-nowrap">{{
             classInfo.course_code
           }}</TableData>

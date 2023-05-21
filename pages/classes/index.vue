@@ -18,11 +18,13 @@
             individualClass.course_code
           }}</TableData>
           <TableData>{{ individualClass.course_name }}</TableData>
-          <TableData>
+          <TableData
+            class="cursor-pointer whitespace-nowrap hover:opacity-75"
+            @click="useCopyToClipboard(individualClass.shared_code)"
+          >
             <Icon
               name="ic:round-file-copy"
               class="mr-1 h-6 w-6 cursor-pointer text-primary"
-              @click="copyToClipboard(individualClass.shared_code)"
             />
             {{ individualClass.shared_code }}
           </TableData>
@@ -82,10 +84,6 @@ const deleteNote = async (id: number) => {
   if (data) {
     console.log(data);
   }
-};
-const copyToClipboard = (text: string) => {
-  navigator.clipboard.writeText(text);
-  useSetAppAlert(true, "Copied to clipboard", "success");
 };
 </script>
 

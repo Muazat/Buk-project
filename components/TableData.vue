@@ -1,5 +1,5 @@
 <template>
-  <td scope="col" class="text-sm px-6 py-4 text-left">
+  <td scope="col" class="px-6 py-4 text-left text-sm" v-bind="$attrs">
     <slot></slot>
   </td>
 </template>
