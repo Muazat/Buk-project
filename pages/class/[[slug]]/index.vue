@@ -65,6 +65,19 @@
                 {{ classInfo.course_code }}
               </span>
             </p>
+            <p class="text-sm text-gray-500">
+              Access Code:
+              <span
+                @click="useCopyToClipboard(classInfo.shared_code)"
+                class="cursor-pointer font-bold hover:opacity-75"
+              >
+                {{ classInfo.shared_code }}
+                <Icon
+                  name="ic:round-file-copy"
+                  class="mr-1 h-6 w-6 cursor-pointer text-primary"
+                />
+              </span>
+            </p>
           </div>
         </div>
       </div>
