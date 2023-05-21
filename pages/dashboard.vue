@@ -6,6 +6,7 @@
       :noteCount="noteCount"
       :AssignmentCount="assignmentCount"
       :todoCount="todoCount"
+      :classCount="classCount"
     />
 
     <div class="mt-16 md:flex">
@@ -95,8 +96,10 @@ const showAlert = ref(false);
 const noteCount = ref<number | null>(0);
 const assignmentCount = ref<number | null>(0);
 const todoCount = ref<number | null>(0);
+const classCount = ref<number | null>(0);
 const latestSchedule = ref([]);
 const latestAssignment = ref([]);
+
 async function getCounts() {
   const noteCall = supabaseClient
     .from("Notes")
@@ -114,16 +117,25 @@ async function getCounts() {
     .order("due_date")
     .neq("status", "Done")
     .limit(5);
-  Promise.allSettled([noteCall, AssignmentCall, todoCall]).then((res) => {
-    console.log({ res });
 
-    noteCount.value = res[0].value?.count;
-    assignmentCount.value = res[1].value?.count;
-    todoCount.value = res[2].value?.count;
-    latestSchedule.value = res[2].value.data;
-    latestAssignment.value = res[1].value.data;
-    showAlert.value = true;
-  });
+  const classCall = supabaseClient
+    .from("Lecturer's classes")
+    .select("*", { count: "exact", head: true })
+    .eq("user_id", useSupabaseUser()?.value.id);
+  Promise.allSettled([noteCall, AssignmentCall, todoCall, classCall]).then(
+    (res) => {
+      console.log({ res });
+
+      noteCount.value = res[0].value?.count;
+      assignmentCount.value = res[1].value?.count;
+      latestAssignment.value = res[1].value.data;
+      todoCount.value = res[2].value?.count;
+      latestSchedule.value = res[2].value.data;
+      classCount.value = res[3].value?.count;
+
+      showAlert.value = true;
+    }
+  );
 }
 getCounts();
 

@@ -21,16 +21,30 @@
 </template>
 
 <script setup lang="ts">
-const { noteCount, AssignmentCount, todoCount } = definePropsRefs<{
+const { noteCount, AssignmentCount, todoCount, classCount } = definePropsRefs<{
   noteCount: number | null;
   AssignmentCount: number | null;
   todoCount: number | null;
+  classCount: number | null;
 }>();
 const summaries = ref([
   { title: "Total notes", value: noteCount, link: "notes" },
   { title: "Assignment", value: AssignmentCount, link: "assignments" },
   { title: "Task todo", value: todoCount, link: "todo" },
 ]);
+
+const isLecturer = computed(() => {
+  return useSupabaseUser().value?.user_metadata?.isInstructor;
+});
+
+//if user is lecturer, replace assignment with class
+if (isLecturer.value) {
+  summaries.value.splice(1, 1, {
+    title: "Total classes",
+    value: classCount,
+    link: "classes",
+  });
+}
 </script>
 
 <style lang="scss" scoped></style>

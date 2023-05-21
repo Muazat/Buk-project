@@ -52,3 +52,8 @@ export const useDownloadFile = async (
     }
   }
 };
+
+export const useCopyToClipboard = (text: string) => {
+  navigator.clipboard.writeText(text);
+  useSetAppAlert(true, "Copied to clipboard", "success");
+};

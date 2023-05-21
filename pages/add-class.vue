@@ -36,6 +36,7 @@ const courseCode = ref("");
 
 const submitHandler = async () => {
   try {
+    useSetAppLoader(true, "Adding class...");
     const { data, error } = await supabaseClient
       .from("Lecturer's classes")
       .insert({
@@ -48,6 +49,8 @@ const submitHandler = async () => {
           .trim()
           .replace(/\s/g, "")}-${Date.now().toString().slice(-5)}`,
       });
+    useSetAppLoader(false);
+    navigateTo("/classes");
     if (error) {
       console.log(error);
     }
