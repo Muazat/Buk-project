@@ -2,22 +2,11 @@
   <div>
     <div class="backdrop" ref="backDrop" @click="backdropClickHandler"></div>
     <header class="">
-      <button
-        class="ml-1 mt-2 rounded border border-[tertiary] p-1 font-bold"
-        @click="menuToggleClickHandler"
-      >
-        <svg
-          class="h-8 w-8"
-          aria-hidden="true"
-          fill="blue"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
+      <button class="ml-1 mt-2 rounded border border-[tertiary] p-1 font-bold" @click="menuToggleClickHandler">
+        <svg class="h-8 w-8" aria-hidden="true" fill="blue" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
             d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-            clip-rule="evenodd"
-          ></path>
+            clip-rule="evenodd"></path>
         </svg>
       </button>
     </header>
@@ -25,11 +14,8 @@
     <nav ref="sideDrawer" class="mobile-nav">
       <ul class="m-8 flex flex-col gap-10">
         <li v-for="link in appSections" :key="link.slug">
-          <nuxt-link
-            @click="backdropClickHandler"
-            :to="`/${link.slug}`"
-            class="flex items-center rounded-lg text-xl text-[#657BCA] hover:text-primary"
-          >
+          <nuxt-link @click="backdropClickHandler" :to="`/${link.slug}`"
+            class="flex items-center rounded-lg text-xl text-[#657BCA] hover:text-primary">
             <Icon :name="link.icon" />
             <span class="ml-4">{{ link.name }}</span>
           </nuxt-link>

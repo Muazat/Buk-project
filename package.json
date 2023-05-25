@@ -38,6 +38,7 @@
     "@pinia/nuxt": "^0.4.9",
     "@vuepic/vue-datepicker": "^5.0.1",
     "consola": "^3.1.0",
-    "dayjs": "^1.11.7"
+    "dayjs": "^1.11.7",
+    "pinia": "^2.1.3"
   }
 }

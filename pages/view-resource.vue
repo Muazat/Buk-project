@@ -3,7 +3,7 @@
     <div class="rounded border border-black bg-tertiary md:w-4/5 md:p-6">
       <div class="inline-flex">
         <div class="mr-4">
-          <NuxtLink to="edit-assignment">
+          <!-- <NuxtLink to="edit-note">
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M12 2v6a2 2 0 0 0 2 2h4.92c-.596.22-1.144.554-1.558.97l-6.05 6.092a2.815 2.815 0 0 0-.728 1.279l-.525 2.03A2.082 2.082 0 0 0 10.3 22H5.5A1.5 1.5 0 0 1 4 20.5v-17A1.5 1.5 0 0 1 5.5 2H12Z"
@@ -12,8 +12,9 @@
                 d="M13.5 2.5V8a.5.5 0 0 0 .5.5h5.5l-6-6ZM12.196 17.572l5.902-5.902a2.285 2.285 0 1 1 3.233 3.232l-5.903 5.902a2.684 2.684 0 0 1-1.247.707l-1.831.457a1.087 1.087 0 0 1-1.318-1.318l.457-1.83c.118-.473.362-.904.707-1.248Z"
                 fill="#212121" />
             </svg>
-          </NuxtLink>
+          </NuxtLink> -->
         </div>
+
         <div class="mr-2" @click="increaseFontClickHandler">
           <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -38,15 +39,15 @@
         </div>
       </div>
       <div class="float-right rounded bg-black px-2 font-extrabold text-tertiary hover:text-red-300">
-        <NuxtLink to="assignments">X</NuxtLink>
+        <NuxtLink to="class">X</NuxtLink>
       </div>
       <h1 class="text-lg font-semibold">
-        {{ useMainStore().loadedAssignment.title }}
+        {{ useMainStore().getLoadedNote.title }}
       </h1>
       <div
         class="mt-2 rounded border border-primary bg-white p-1 text-justify font-medium leading-6 md:p-8 md:leading-10">
         <p ref="text">
-          {{ useMainStore().loadedAssignment.content }}
+          {{ useMainStore().getLoadedNote.description }}
         </p>
       </div>
     </div>
@@ -55,14 +56,12 @@
     <div class="my-3 flex flex-col font-bold">
       <div>Attachments</div>
       <div class="flex">
-        <button @click="
-          useDownloadFile(useMainStore().loadedAssignment, 'assignment')
-        " title="Download File" :disabled="
-  !useMainStore().loadedAssignment.has_attachement &&
-  !useMainStore().loadedAssignment.file_ext
-" :class="[
-  useMainStore().loadedAssignment.has_attachement &&
-    useMainStore().loadedAssignment.file_ext
+        <button @click="useDownloadFile(useMainStore().getLoadedNote, 'notes')" title="Download File" :disabled="
+          !useMainStore().getLoadedNote.has_attachment &&
+          !useMainStore().getLoadedNote.file_ext
+        " :class="[
+  useMainStore().getLoadedNote.has_attachment &&
+    useMainStore().getLoadedNote.file_ext
     ? 'cursor-pointer text-blue-500 hover:text-blue-300'
     : '!pointer-events-none text-gray-300',
 ]">
@@ -72,13 +71,25 @@
       </div>
     </div>
   </div>
+  <!-- to view pdf file -->
+  <!-- <div class="hidden md:flex justify-center mt-3">  <iframe
+      src="@/assets/chatgpt.pdf"
+      class="md:w-[80%] "
+      height="976"
+      frameborder="0"
+    ></iframe></div> -->
+
+  <!-- <object data="@/assets/chatgpt.pdf" type="application/pdf" class="w-full">
+    <iframe
+      src="https://docs.google.com/viewer?url=/assets/chatgpt.pdf&embedded=true"
+    ></iframe>
+  </object> -->
 </template>
 
 <script setup lang="ts">
 import { useMainStore } from "~~/store";
 
 const text = ref<HTMLDivElement>(null);
-// console.log(text);
 var font = false;
 // making text bold
 function boldClickHandler() {
