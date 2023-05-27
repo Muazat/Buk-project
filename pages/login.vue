@@ -6,6 +6,7 @@
     <Alert v-model="showAlert">Wrong Email or Password</Alert>
     <div class="mt-3 flex justify-center font-semibold text-primary">
       <main class="rounded border border-primary bg-tertiary md:p-6">
+        {{ useAppLoader }}
         <form
           class="login-form"
           action=""
@@ -53,10 +54,12 @@ const email = ref("");
 const password = ref("");
 async function loginUser() {
   try {
+    useSetAppLoader(true, "Logging In...");
     const AuthUser = await auth.signInWithPassword({
       email: email.value,
       password: password.value,
     });
+    useSetAppLoader(false);
     if (AuthUser.data.session !== null) {
       useCookie("sb-refresh-token").value =
         AuthUser?.data?.session.refresh_token;

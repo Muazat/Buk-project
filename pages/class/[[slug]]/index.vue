@@ -105,9 +105,9 @@
         </TableHead>
         <tr v-for="resource in resources" class="border">
           <TableData>
-            <div class="inline-flex items-center">
+            <div class="inline-flex items-center gap-8">
               <div
-                class="mr-6 font-bold text-blue-500 hover:text-blue-300"
+                class="font-bold text-blue-500 hover:text-blue-300"
                 :class="[
                   resource.has_attachment && resource.file_ext
                     ? 'cursor-pointer text-blue-500 hover:text-blue-300'
@@ -131,15 +131,15 @@
                       : '!pointer-events-none text-gray-300',
                   ]"
                 >
-                  <Icon name="mdi:file-download" class="mr-8 h-6 w-6" />
-                </button>
-                <button @click="view(resource)">
-                  <Icon
-                    name="mdi:eye-arrow-right"
-                    class="h-6 w-6 cursor-pointer text-blue-500 hover:text-blue-300"
-                  />
+                  <Icon name="mdi:file-download" class="h-6 w-6" />
                 </button>
               </div>
+              <button @click="view(resource)">
+                <Icon
+                  name="mdi:eye-arrow-right"
+                  class="h-6 w-6 cursor-pointer text-blue-500 hover:text-blue-300"
+                />
+              </button>
             </div>
           </TableData>
           <TableData class="whitespace-nowrap">{{ resource.title }}</TableData>
