@@ -36,7 +36,7 @@ export const useDownloadFile = async (
   resource: { id: number; file_ext: string },
   folder: String,
   bucket: string = "files",
-  folderId = useSupabaseUser().value.id
+  folderId = useSupabaseUser().value?.id
 ) => {
   if (resource.id && resource.file_ext) {
     useSetAppLoader(true, "Downloading File");
@@ -50,6 +50,33 @@ export const useDownloadFile = async (
     if (data) {
       useSaveData(data, `${resource.id}.${resource.file_ext}`);
     }
+  }
+};
+export const useGetAssetLink = async (
+  resource: { id: number; file_ext: string },
+  folder: String,
+  bucket: string = "files",
+  folderId = useSupabaseUser().value?.id
+) => {
+  if (
+    resource.id &&
+    resource.file_ext &&
+    ["jpg", "png", "gif", "bmp", "pdf"].includes(resource.file_ext)
+  ) {
+    const { data, error } = await useSupabaseClient()
+      .storage.from(bucket)
+      .createSignedUrl(
+        `${folderId}/${folder}/${resource.id}.${resource.file_ext}`,
+        3600
+      );
+    if (error) {
+      useSetAppAlert(true, error.message, "error");
+    }
+    if (data) {
+      return data.signedUrl;
+    }
+  } else {
+    console.log("file can not be shown in iframe", resource.file_ext);
   }
 };
 
