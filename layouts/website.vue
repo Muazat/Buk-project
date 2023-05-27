@@ -58,6 +58,12 @@
       </ul>
     </nav>
     <slot />
+    <Modal v-if="useAppLoader">
+      <div class="flex items-center justify-center gap-3">
+        <Icon name="line-md:loading-loop" class="h-8 w-8" />
+        <span>{{ useAppLoaderText }}</span>
+      </div>
+    </Modal>
   </div>
 </template>
 
