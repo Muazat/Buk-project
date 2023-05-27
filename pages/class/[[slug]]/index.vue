@@ -8,11 +8,19 @@
     </AddButton>
 
     <div class="mt-4 flex-col md:mt-16 md:flex">
-      <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+      <button
+        id="dropdownDefaultButton"
+        data-dropdown-toggle="dropdown"
         class="mx-2 mb-4 inline-flex items-center justify-between rounded-lg bg-blue-700 px-4 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mx-8"
-        type="button" v-if="!isLecturer" @click="showAccessCode = !showAccessCode">
+        type="button"
+        v-if="!isLecturer"
+        @click="showAccessCode = !showAccessCode"
+      >
         Previously Accessed Courses
-        <Icon :name="!showAccessCode ? 'mdi:chevron-down' : 'mdi:chevron-up'" class="h-6 w-6" />
+        <Icon
+          :name="!showAccessCode ? 'mdi:chevron-down' : 'mdi:chevron-up'"
+          class="h-6 w-6"
+        />
       </button>
 
       <Table v-if="showAccessCode && !isLecturer" class="md:basis-4/5">
@@ -22,10 +30,15 @@
           <TableData class="font-bold">Course TItle</TableData>
         </TableHead>
         <tr v-for="classInfo in accessedCourses" class="border">
-          <TableData class="cursor-pointer whitespace-nowrap hover:opacity-75"
-            @click="useCopyToClipboard(classInfo.access_code)">
+          <TableData
+            class="cursor-pointer whitespace-nowrap hover:opacity-75"
+            @click="useCopyToClipboard(classInfo.access_code)"
+          >
             {{ classInfo.access_code }}
-            <Icon name="ic:round-file-copy" class="mr-1 h-6 w-6 cursor-pointer text-primary" />
+            <Icon
+              name="ic:round-file-copy"
+              class="mr-1 h-6 w-6 cursor-pointer text-primary"
+            />
           </TableData>
 
           <TableData class="whitespace-nowrap">{{
@@ -54,18 +67,33 @@
             </p>
             <p class="text-sm text-gray-500">
               Access Code:
-              <span @click="useCopyToClipboard(classInfo.shared_code)" class="cursor-pointer font-bold hover:opacity-75">
+              <span
+                @click="useCopyToClipboard(classInfo.shared_code)"
+                class="cursor-pointer font-bold hover:opacity-75"
+              >
                 {{ classInfo.shared_code }}
-                <Icon name="ic:round-file-copy" class="mr-1 h-6 w-6 cursor-pointer text-primary" />
+                <Icon
+                  name="ic:round-file-copy"
+                  class="mr-1 h-6 w-6 cursor-pointer text-primary"
+                />
               </span>
             </p>
           </div>
         </div>
       </div>
-      <form v-if="!isLecturer" @submit.prevent="refresh" class="flex flex-col justify-end gap-3 md:flex-row">
-        <input type="text" v-model="course_access_code" autocomplete="on" required
+      <form
+        v-if="!isLecturer"
+        @submit.prevent="refresh"
+        class="flex flex-col justify-end gap-3 md:flex-row"
+      >
+        <input
+          type="text"
+          v-model="course_access_code"
+          autocomplete="on"
+          required
           class="float-right w-fit rounded-md border border-gray-300 px-4 py-2 md:basis-2/5"
-          placeholder="Input Course Access Code" />
+          placeholder="Input Course Access Code"
+        />
         <Mbutton class="!my-0 whitespace-nowrap"> Get Resources </Mbutton>
       </form>
       <Table class="md:basis-4/5">
@@ -78,27 +106,38 @@
         <tr v-for="resource in resources" class="border">
           <TableData>
             <div class="inline-flex items-center">
-              <div class="mr-6 font-bold text-blue-500 hover:text-blue-300" :class="[
-                resource.has_attachment && resource.file_ext
-                  ? 'cursor-pointer text-blue-500 hover:text-blue-300'
-                  : 'cursor-not-allowed text-gray-300',
-              ]">
-                <button @click="
-                  useDownloadFile(
-                    resource,
-                    'resources',
-                    'lecturers-record',
-                    resources[0].user_id
-                  )
-                " title="Download File" :disabled="!resource.has_attachment && !resource.file_ext" :class="[
-  resource.has_attachment && resource.file_ext
-    ? 'cursor-pointer text-blue-500 hover:text-blue-300'
-    : '!pointer-events-none text-gray-300',
-]">
-                  <Icon name="mdi:file-download" class="h-6 w-6 mr-8" />
+              <div
+                class="mr-6 font-bold text-blue-500 hover:text-blue-300"
+                :class="[
+                  resource.has_attachment && resource.file_ext
+                    ? 'cursor-pointer text-blue-500 hover:text-blue-300'
+                    : 'cursor-not-allowed text-gray-300',
+                ]"
+              >
+                <button
+                  @click="
+                    useDownloadFile(
+                      resource,
+                      'resources',
+                      'lecturers-record',
+                      resources![0].user_id
+                    )
+                  "
+                  title="Download File"
+                  :disabled="!resource.has_attachment && !resource.file_ext"
+                  :class="[
+                    resource.has_attachment && resource.file_ext
+                      ? 'cursor-pointer text-blue-500 hover:text-blue-300'
+                      : '!pointer-events-none text-gray-300',
+                  ]"
+                >
+                  <Icon name="mdi:file-download" class="mr-8 h-6 w-6" />
                 </button>
                 <button @click="view(resource)">
-                  <Icon name="mdi:eye-arrow-right" class="h-6 w-6 cursor-pointer text-blue-500 hover:text-blue-300" />
+                  <Icon
+                    name="mdi:eye-arrow-right"
+                    class="h-6 w-6 cursor-pointer text-blue-500 hover:text-blue-300"
+                  />
                 </button>
               </div>
             </div>
@@ -109,10 +148,15 @@
           }}</TableData>
           <TableData v-if="isLecturer">
             <div class="inline-flex gap-6">
-              <Icon name="material-symbols:edit-document"
-                class="h-6 w-6 cursor-pointer text-blue-500 hover:text-blue-300" />
-              <Icon name="ic:baseline-delete" @click="deleteNote(resource.id)"
-                class="h-6 w-6 cursor-pointer text-red-500 hover:text-red-300" />
+              <Icon
+                name="material-symbols:edit-document"
+                class="h-6 w-6 cursor-pointer text-blue-500 hover:text-blue-300"
+              />
+              <Icon
+                name="ic:baseline-delete"
+                @click="deleteNote(resource.id)"
+                class="h-6 w-6 cursor-pointer text-red-500 hover:text-red-300"
+              />
             </div>
           </TableData>
         </tr>
